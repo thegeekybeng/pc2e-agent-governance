@@ -162,7 +162,7 @@ We welcome contributions to the PC2E Agent Governance Framework. To propose upda
 
 - **Rule Conflicts**: Refer to the Precedence Logic section.
 - **Framework Gaps**: Document detected inconsistencies and propose updates to the relevant module.
-- **Version History**: See [MIGRATION_STATUS.md](MIGRATION_STATUS.md) for detailed change logs.
+- **Version History**: See [CHANGELOG.md](CHANGELOG.md) for detailed change logs.
 
 ---
 
