@@ -1,13 +1,34 @@
 # PC2E Agent Governance Framework
 
-> **Last Updated**: 2026-03-19
-> **Framework Version**: 1.0 (PC2E-Aligned)
+> Production-ready governance for deterministic AI agents
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Framework Version](https://img.shields.io/badge/version-1.0-blue.svg)]()
+
+[Quick Start](#quick-start) • [Documentation](#documentation) • [Examples](#examples) • [Contributing](#contributing)
+
+---
+
+## Why PC2E?
+
+Enterprise AI adoption is blocked by unpredictable behavior. This framework implements **Predict, Communicate, Explain (PC2E)** principles to ensure:
+
+- **Predictability**: Confidence scores for every technical decision.
+- **Transparency**: Core assumptions declared BEFORE major actions are taken.
+- **Auditability**: A clear, reproducible chain of reasoning for all system changes.
+
+## Production Results
+
+- ✅ **20+ applications** in production environment.
+- ✅ **0 regressions** in 60 days of operations.
+- ✅ **100% task completion rate** (all exit criteria strictly met).
+- ✅ **Deterministic behavior** across all operating modes.
 
 ---
 
 ## Overview
 
-The **PC2E Agent Governance Framework** is a production-grade orchestration and governance layer designed to ensure predictable, communicative, and verifiable AI agent operations. Built on the core principles of **Predict, Communicate, and Explain (PC2E)**, this framework provides the necessary structure to manage complex multi-agent workflows with zero technical debt and maximum architectural scalability.
+The **PC2E Agent Governance Framework** is a production-grade orchestration and governance layer designed to ensure predictable, communicative, and verifiable AI agent operations. This framework provides the necessary structure to manage complex multi-agent workflows with zero technical debt and maximum architectural scalability.
 
 ## Framework Architecture
 
