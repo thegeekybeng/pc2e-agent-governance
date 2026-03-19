@@ -127,6 +127,37 @@ All implementations are evaluated against these four non-negotiable imperatives,
 
 ---
 
+## Documentation
+
+Comprehensive documentation for each layer of the framework is located in the following directories:
+
+- **[Global Governance](global/)**: Universal rules, anti-regression patterns, and the PC2E core philosophy.
+- **[Operational Modes](modes/)**: Detailed Entry/Exit gates for Orchestrator, Architect, Code, Debug, and Ask modes.
+- **[Standardized Workflows](workflows/)**: Step-by-step procedures for Docker, CI/CD, and system migrations.
+- **[Governance Artifacts](templates/)**: Standardized formats for Tech Decision Records (TDRs) and system logs.
+
+## Examples
+
+### PC2E in Action: Technical Hypothesis
+
+**Before PC2E:**
+> "I will try to fix the database connection by restarting the service."
+
+**After PC2E (High Fidelity):**
+> **Predict**: I have 85% confidence that a service restart will resolve the timeout.
+> **Communicate**: I am assuming the underlying network config is stable. I will use `systemctl restart` now.
+> **Explain**: The logs show a stale socket error (`Err: 110`), which typically indicates a hung process rather than a configuration failure.
+
+## Contributing
+
+We welcome contributions to the PC2E Agent Governance Framework. To propose updates:
+
+1. Identify a gap or inconsistency in the current [Operational Modes](modes/).
+2. Document the proposed change using the [TDR Template](templates/tdr-template.md).
+3. Submit a Pull Request following the `feat/` or `fix/` [branch naming conventions](global/mandatory-documentation.md).
+
+---
+
 ## Support & Maintenance
 
 - **Rule Conflicts**: Refer to the Precedence Logic section.
@@ -135,7 +166,9 @@ All implementations are evaluated against these four non-negotiable imperatives,
 
 ---
 
-**v1.0 Release Notes (2026-03-19)**
+## Release Notes
+
+### v1.0 (2026-03-19)
 
 - Initial deployment of the PC2E-aligned governance structure.
 - Consolidation of legacy rule systems into a 4-tier directory hierarchy.
