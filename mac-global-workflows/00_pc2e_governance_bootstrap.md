@@ -121,13 +121,38 @@ Full protocol: `pc2e-agent-governance/global/loop-breaking-protocol.md`
 
 ---
 
-## 8. Device Context
+## 8. Device Context & Execution Environment
 
-This governance configuration is deployed on two devices:
+This governance configuration is deployed on two devices with **different execution environments**:
 
 | Device | Governance Path | Global Workflows Path |
 |---|---|---|
 | **Ugreen NAS** | `/volume2/docker/pc2e-agent-governance/` | `/home/thegeekybeng/.gemini/antigravity/global_workflows/` |
 | **MacBook Air** | `~/pc2e-agent-governance/` | `~/.gemini/antigravity/global_workflows/` |
 
-Both devices run identical governance configurations. Changes to `pc2e-agent-governance/` must be committed and pulled on both devices to remain in sync.
+### Identify Your Current Device
+
+Check the active workspace path:
+- Starts with `/volume2/` → **Ugreen NAS**
+- Starts with `/Users/` → **MacBook Air** ← you are here
+
+### MacBook Air Execution Rules
+
+You are on the **MacBook Air**. Node.js, npm, npx, Python, and other runtimes are installed natively.
+
+Run commands directly — no Docker wrapper required:
+
+```
+# ✅ Native execution on MacBook Air
+npm install
+npm run build
+npx <command>
+node script.js
+python3 script.py
+```
+
+### NAS Execution Rules — Do NOT Apply Here
+
+The NAS requires all npm/npx/node commands to run via `docker run`. That rule applies **only on the NAS** and is documented in `nas-execution-rules.md` which exists only in the NAS global_workflows folder.
+
+**Do not apply NAS Docker-wrapping rules on this MacBook Air.**

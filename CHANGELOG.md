@@ -4,6 +4,18 @@ All notable changes to the **PC2E Agent Governance Framework** will be documente
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-03-23
+
+### Added
+
+- **`mac-global-workflows/` NAS execution divergence**: Updated `00_pc2e_governance_bootstrap.md` for MacBook Air to explicitly permit native npm/npx/node execution and clarify NAS rules do not apply there.
+
+### Fixed
+
+- **NAS npm/npx enforcement**: Added `nas-execution-rules.md` (NAS-only, not synced to Mac) with a hard rule that ALL Node.js commands on the NAS must run via `docker run`. Rule applies across all operational modes. Updated NAS bootstrap to surface this rule prominently with inline examples.
+
+---
+
 ## [1.1.0] - 2026-03-23
 
 ### Added
