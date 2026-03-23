@@ -4,6 +4,18 @@ All notable changes to the **PC2E Agent Governance Framework** will be documente
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-03-23
+
+### Added
+
+- **`nas-execution-rules.md`** (NAS `global_workflows` only — not synced to Mac): Full runtime inventory verified against the NAS host. Covers Node.js, Python, Go, Java, PHP, Ruby, Rust. Each runtime has a FORBIDDEN section and a CORRECT Docker pattern. Pre-command checklist for device identity check included.
+
+### Changed
+
+- **`mac-global-workflows/00_pc2e_governance_bootstrap.md`**: Section 8 now explicitly lists MacBook Air native execution as correct for all runtimes and confirms NAS rules do not apply.
+
+---
+
 ## [1.2.0] - 2026-03-23
 
 ### Added

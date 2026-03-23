@@ -134,25 +134,27 @@ This governance configuration is deployed on two devices with **different execut
 
 Check the active workspace path:
 - Starts with `/volume2/` → **Ugreen NAS**
-- Starts with `/Users/` → **MacBook Air** ← you are here
+- Starts with `/Users/` → **MacBook Air**
 
 ### MacBook Air Execution Rules
 
-You are on the **MacBook Air**. Node.js, npm, npx, Python, and other runtimes are installed natively.
+You are on the **MacBook Air**. Node.js, npm, npx, Python, pip, and other runtimes are installed natively.
 
 Run commands directly — no Docker wrapper required:
 
-```
+```bash
 # ✅ Native execution on MacBook Air
 npm install
 npm run build
 npx <command>
 node script.js
 python3 script.py
+pip3 install <package>
 ```
 
 ### NAS Execution Rules — Do NOT Apply Here
 
-The NAS requires all npm/npx/node commands to run via `docker run`. That rule applies **only on the NAS** and is documented in `nas-execution-rules.md` which exists only in the NAS global_workflows folder.
+The NAS requires all npm/npx/node/pip and other runtime commands to run via `docker run`.
+That rule is documented in `nas-execution-rules.md` which exists **only in the NAS global_workflows folder**.
 
 **Do not apply NAS Docker-wrapping rules on this MacBook Air.**
