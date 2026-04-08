@@ -1,6 +1,7 @@
 # Technology Scoring Rubric
 
 ---
+
 last_updated: 2026-03-19
 pc2e_version: 1.0
 ---
@@ -25,6 +26,7 @@ Every technology decision MUST be scored on two dimensions:
 **Definition:** How easily does this technology integrate with our existing architecture, languages, and tools?
 
 ### 10/10 - Perfect Compatibility
+
 - Native integration with no configuration required
 - Zero conflicts with existing dependencies
 - Widely adopted across the industry (proven interoperability)
@@ -32,36 +34,42 @@ Every technology decision MUST be scored on two dimensions:
 - Examples: PostgreSQL for Python projects, Redis for caching, Docker for deployment
 
 ### 9/10 - Excellent Compatibility
+
 - Works seamlessly with minor configuration (5-10 lines)
 - Well-documented integration guides exist
 - Popular in the ecosystem (npm/PyPI downloads > 1M/month)
 - Examples: FastAPI for Python APIs, React for frontend, Nginx for reverse proxy
 
 ### 8/10 - Very Good Compatibility
+
 - Requires moderate configuration (10-30 lines)
 - Good community support for integration
 - Established patterns exist
 - Examples: Kafka for event streaming, Elasticsearch for search
 
 ### 7/10 - Good Compatibility
+
 - Requires notable configuration effort (30-100 lines)
 - Integration is well-documented but not trivial
 - Some quirks or edge cases to handle
 - Examples: GraphQL implementations, some ORMs
 
 ### 6/10 - Acceptable Compatibility
+
 - Requires significant configuration (100+ lines)
 - Integration documentation is sparse
 - May need custom adapters or glue code
 - Examples: Legacy system integrations, niche databases
 
 ### 5/10 - Marginal Compatibility
+
 - Requires substantial adaptation work
 - Potential for version conflicts
 - Limited community examples
 - Consider alternatives before proceeding
 
 ### 4/10 and below - Poor Compatibility
+
 - Major incompatibilities with existing stack
 - Requires architectural changes to accommodate
 - High risk of version conflicts
@@ -74,6 +82,7 @@ Every technology decision MUST be scored on two dimensions:
 **Definition:** How sustainable is this technology for long-term use and maintenance?
 
 ### 10/10 - Exceptional Maintainability
+
 - Active development with frequent releases (monthly or better)
 - Large, healthy community (GitHub stars > 20k)
 - Excellent documentation (official docs + tutorials + examples)
@@ -82,6 +91,7 @@ Every technology decision MUST be scored on two dimensions:
 - Examples: Kubernetes, PostgreSQL, Node.js LTS
 
 ### 9/10 - Excellent Maintainability
+
 - Active development with regular releases (quarterly)
 - Strong community (GitHub stars > 10k)
 - Good documentation and active discussions
@@ -89,6 +99,7 @@ Every technology decision MUST be scored on two dimensions:
 - Examples: FastAPI, Redis, Nginx
 
 ### 8/10 - Very Good Maintainability
+
 - Regular updates (1-2 times per year)
 - Moderate community (GitHub stars > 5k)
 - Decent documentation with some gaps
@@ -96,6 +107,7 @@ Every technology decision MUST be scored on two dimensions:
 - Examples: Many popular npm/PyPI packages
 
 ### 7/10 - Good Maintainability
+
 - Periodic updates (yearly)
 - Small but active community
 - Documentation exists but may be incomplete
@@ -103,6 +115,7 @@ Every technology decision MUST be scored on two dimensions:
 - Examples: Mature, niche libraries
 
 ### 6/10 - Acceptable Maintainability
+
 - Infrequent updates (1-2 years between releases)
 - Small community or single maintainer
 - Documentation is minimal or outdated
@@ -110,12 +123,14 @@ Every technology decision MUST be scored on two dimensions:
 - **Requires monitoring** for security updates
 
 ### 5/10 - Marginal Maintainability
+
 - Maintenance-mode only (bug fixes, no new features)
 - Very small community
 - Documentation is poor or non-existent
 - Consider migration timeline
 
 ### 4/10 and below - Poor Maintainability
+
 - No recent updates (2+ years)
 - Abandoned or deprecated
 - No community support
@@ -142,6 +157,7 @@ Every technology decision MUST be scored on two dimensions:
 ### Emerging Technologies (< 2 years old)
 
 **Apply penalty:**
+
 - Reduce Maintainability score by 1-2 points
 - Uncertain long-term viability
 - API may change significantly
@@ -151,6 +167,7 @@ Every technology decision MUST be scored on two dimensions:
 ### Security-Critical Components
 
 **Require higher threshold:**
+
 - Minimum 7/10 on both dimensions
 - Must have active security patch history
 - Must have clear vulnerability disclosure process
@@ -160,6 +177,7 @@ Every technology decision MUST be scored on two dimensions:
 ### Data Storage Technologies
 
 **Require higher maintainability:**
+
 - Minimum 8/10 on Maintainability (data longevity critical)
 - Must have clear backup/restore procedures
 - Must have proven upgrade path
@@ -173,6 +191,7 @@ Every technology decision MUST be scored on two dimensions:
 When scoring a technology, consider:
 
 ### Compatibility Evaluation
+
 - [ ] Tested integration with our stack
 - [ ] Version conflicts checked
 - [ ] Configuration complexity assessed
@@ -180,6 +199,7 @@ When scoring a technology, consider:
 - [ ] Performance benchmarks reviewed
 
 ### Maintainability Evaluation
+
 - [ ] Release history reviewed (frequency, cadence)
 - [ ] Community size measured (GitHub stars, npm downloads, etc.)
 - [ ] Documentation quality assessed
@@ -196,12 +216,14 @@ When scoring a technology, consider:
 ### Example 1: TypeScript
 
 **Compatibility Score: 10/10**
+
 - Native JavaScript superset (perfect integration)
 - Works with all Node.js tools
 - Industry standard for large-scale JS projects
 - Zero conflicts with existing dependencies
 
 **Maintainability Score: 10/10**
+
 - Backed by Microsoft (long-term support guaranteed)
 - Monthly releases with clear roadmap
 - Massive community (GitHub stars > 90k)
@@ -215,12 +237,14 @@ When scoring a technology, consider:
 ### Example 2: Older ORM Library (Hypothetical)
 
 **Compatibility Score: 7/10**
+
 - Works with Python 3.9+
 - Requires custom migrations for some data types
 - Integration documentation exists but is dated
 - Some quirks with async support
 
 **Maintainability Score: 5/10**
+
 - Last release 18 months ago
 - Single maintainer (bus factor = 1)
 - Documentation hasn't been updated in 2 years
@@ -236,12 +260,14 @@ When scoring a technology, consider:
 ### Example 3: Experimental AI Library (Hypothetical)
 
 **Compatibility Score: 6/10**
+
 - Requires specific Python 3.11
 - Some conflicts with existing data processing libraries
 - Documentation is incomplete
 - Limited community examples
 
 **Maintainability Score: 4/10**
+
 - Released 6 months ago (very new)
 - Unclear roadmap
 - Academic project (single university lab)
@@ -266,6 +292,7 @@ Technology scores can change. Re-evaluate when:
 - 6 months have passed since last evaluation
 
 **Process:**
+
 1. Re-score using this rubric
 2. Update TDR in SYSTEM_LOG.md
 3. If score drops below threshold, create migration plan
@@ -279,6 +306,7 @@ Technology scores can change. Re-evaluate when:
 When integrating with legacy systems that score poorly:
 
 **Approach:**
+
 - Create abstraction layer (adapter pattern)
 - Isolate legacy dependency
 - Document risks in TDR
@@ -286,6 +314,7 @@ When integrating with legacy systems that score poorly:
 - Set review date (6-12 months)
 
 **Example:**
+
 ```
 Legacy System: Proprietary Database (Compatibility: 4/10, Maintainability: 3/10)
 
@@ -303,6 +332,7 @@ Solution: Create database abstraction layer
 When scoring, state your confidence:
 
 **Example:**
+
 ```
 Compatibility Score: 8/10 (Confidence: 90%)
 - Based on: Official docs, community examples, personal testing
