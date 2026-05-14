@@ -1,3 +1,9 @@
+---
+trigger: always_on
+last_updated: 2026-03-23
+pc2e_version: 1.0
+---
+
 # Ask Mode
 
 > **Purpose**: Research, analysis, explanations, and recommendations

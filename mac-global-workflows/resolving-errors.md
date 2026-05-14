@@ -2,13 +2,16 @@
 description: Debug Mode — supplements pc2e-agent-governance/modes/debug.md
 trigger: debug_mode
 last_updated: 2026-03-23
+pc2e_version: 1.0
 ---
+
+# Resolving Errors
 
 > **GOVERNANCE AUTHORITY**: Full Debug Mode rules (Pre-Debug Gate, systematic approach, escalation policy, anti-regression rules, post-debug documentation) are defined in `pc2e-agent-governance/modes/debug.md`. Read that file first. The rules below are additional operational mandates specific to this environment.
 
 ---
 
-# Debug Mode — Environment-Specific Rules
+## Debug Mode — Environment-Specific Rules
 
 ## NAS / Docker Environment Additions
 

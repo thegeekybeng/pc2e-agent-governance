@@ -1,9 +1,11 @@
-# System Log Entry Template
-
 ---
 last_updated: 2026-03-19
 pc2e_version: 1.0
+trigger: always_on
 ---
+
+# System Log Entry Template
+
 
 > Use this template for all entries in SYSTEM_LOG.md. Consistency enables easy searching and auditing.
 
@@ -249,7 +251,7 @@ pc2e_version: 1.0
 ### Entry Types
 
 | Type | When to Use |
-|------|-------------|
+| ------ | ------------- |
 | **Implementation** | New feature, new component, or new capability |
 | **Bug Fix** | Resolving a defect or incorrect behavior |
 | **Architecture Change** | Structural changes to system design |

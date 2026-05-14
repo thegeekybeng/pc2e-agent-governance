@@ -2,13 +2,16 @@
 description: Code Mode — supplements pc2e-agent-governance/modes/code.md and global/governance-framework.md
 trigger: code_mode
 last_updated: 2026-03-23
+pc2e_version: 1.0
 ---
+
+# Workflow Docker
 
 > **GOVERNANCE AUTHORITY**: Full Code Mode rules (pre-implementation gate, decision escalation, code quality standards, security audit, zero technical debt policy, post-code verification) are defined in `pc2e-agent-governance/modes/code.md` and `pc2e-agent-governance/global/governance-framework.md`. Read those files first. The standards below are environment-specific extensions.
 
 ---
 
-# Code Mode — Environment-Specific Standards
+## Code Mode — Environment-Specific Standards
 
 ## NAS / Docker Environment Extensions
 

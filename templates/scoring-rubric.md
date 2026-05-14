@@ -1,10 +1,11 @@
-# Technology Scoring Rubric
-
 ---
-
 last_updated: 2026-03-19
 pc2e_version: 1.0
+trigger: always_on
 ---
+
+# Technology Scoring Rubric
+
 
 > This rubric provides objective criteria for evaluating technologies, libraries, and frameworks.
 
@@ -141,7 +142,7 @@ Every technology decision MUST be scored on two dimensions:
 ## Combined Scoring Matrix
 
 | Compatibility | Maintainability | Decision |
-|:---:|:---:|---|
+| :---: | :---: | --- |
 | 9-10 | 9-10 | ✅ **Ideal** - Proceed with confidence |
 | 8-9 | 7-9 | ✅ **Excellent** - Good choice |
 | 7-8 | 7-8 | ✅ **Good** - Acceptable with awareness of trade-offs |
@@ -215,14 +216,14 @@ When scoring a technology, consider:
 
 ### Example 1: TypeScript
 
-**Compatibility Score: 10/10**
+#### Compatibility Score: 10/10
 
 - Native JavaScript superset (perfect integration)
 - Works with all Node.js tools
 - Industry standard for large-scale JS projects
 - Zero conflicts with existing dependencies
 
-**Maintainability Score: 10/10**
+#### Maintainability Score: 10/10
 
 - Backed by Microsoft (long-term support guaranteed)
 - Monthly releases with clear roadmap
@@ -236,14 +237,14 @@ When scoring a technology, consider:
 
 ### Example 2: Older ORM Library (Hypothetical)
 
-**Compatibility Score: 7/10**
+#### Compatibility Score: 7/10
 
 - Works with Python 3.9+
 - Requires custom migrations for some data types
 - Integration documentation exists but is dated
 - Some quirks with async support
 
-**Maintainability Score: 5/10**
+#### Maintainability Score: 5/10
 
 - Last release 18 months ago
 - Single maintainer (bus factor = 1)
@@ -259,14 +260,14 @@ When scoring a technology, consider:
 
 ### Example 3: Experimental AI Library (Hypothetical)
 
-**Compatibility Score: 6/10**
+#### Compatibility Score: 6/10
 
 - Requires specific Python 3.11
 - Some conflicts with existing data processing libraries
 - Documentation is incomplete
 - Limited community examples
 
-**Maintainability Score: 4/10**
+#### Maintainability Score: 4/10
 
 - Released 6 months ago (very new)
 - Unclear roadmap
@@ -315,7 +316,7 @@ When integrating with legacy systems that score poorly:
 
 **Example:**
 
-```
+```text
 Legacy System: Proprietary Database (Compatibility: 4/10, Maintainability: 3/10)
 
 Solution: Create database abstraction layer
@@ -333,7 +334,7 @@ When scoring, state your confidence:
 
 **Example:**
 
-```
+```text
 Compatibility Score: 8/10 (Confidence: 90%)
 - Based on: Official docs, community examples, personal testing
 - Uncertainty: Performance at scale (not tested with our dataset size)

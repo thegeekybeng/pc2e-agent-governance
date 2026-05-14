@@ -1,10 +1,11 @@
-# Mandatory Documentation Standards
-
 ---
 trigger: always_on
 last_updated: 2026-03-19
 pc2e_version: 1.0
 ---
+
+# Mandatory Documentation Standards
+
 
 > Documentation is not optional. It is a core deliverable that must be completed before any task is considered done.
 
@@ -384,7 +385,7 @@ Rather than just logging "what" was changed, you MUST log the **Chain of Reasoni
 
 When documenting a complex fix or architectural shift, structure your logic as:
 
-```
+```text
 Observation → Hypothesis → Action
 ```
 
