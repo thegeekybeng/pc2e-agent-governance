@@ -1,3 +1,9 @@
+---
+trigger: always_on
+last_updated: 2026-03-23
+pc2e_version: 1.0
+---
+
 # Docker Compose Workflow
 
 > **Purpose**: Creating and managing Docker Compose files for containerized services

@@ -1,3 +1,9 @@
+---
+trigger: always_on
+last_updated: 2026-03-23
+pc2e_version: 1.0
+---
+
 # Debug Mode
 
 > **Purpose**: Troubleshooting, error investigation, and fix verification

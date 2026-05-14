@@ -2,7 +2,10 @@
 description: Global Docker Workflow — supplements pc2e-agent-governance/workflows/docker-compose-workflow.md
 trigger: always_on
 last_updated: 2026-03-23
+pc2e_version: 1.0
 ---
+
+# Global Docker Workflow
 
 > **GOVERNANCE AUTHORITY**: For Docker standards (non-root containers, multi-stage builds, health checks, pinned versions), refer first to `pc2e-agent-governance/workflows/docker-compose-workflow.md`. The steps below are NAS-specific operational mandates that extend those standards.
 

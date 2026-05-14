@@ -1,10 +1,11 @@
-# Loop-Breaking Protocol
-
 ---
 trigger: always_on
 last_updated: 2026-03-19
 pc2e_version: 1.0
 ---
+
+# Loop-Breaking Protocol
+
 
 > This protocol defines how to detect when the AI agent is stuck in a loop and provides systematic procedures to escape.
 
@@ -72,14 +73,14 @@ The agent is in a loop if ANY of the following occur:
 - Making the same type of code change in different locations
 
 **Example of violating the 2-loop limit:**
-```
+```text
 Attempt 1: Change port from 8080 to 8081 → Failed
 Attempt 2: Change port from 8081 to 8082 → Failed
 Attempt 3: Change port from 8082 to 8083 → STOP (this is a loop)
 ```
 
 **Proper response after 2 failures:**
-```
+```text
 I've attempted to fix the port conflict twice without success. This indicates
 I'm missing critical context. Let me re-read the governance files and re-analyze
 the root cause.
@@ -98,7 +99,7 @@ When a loop is detected, the agent MUST execute ALL of the following steps:
 
 ### Step 2: Declare the Loop
 Output to the user:
-```
+```text
 Loop detected: [exact pattern]
 
 I have attempted [X] fixes for [problem] without success:
@@ -140,7 +141,7 @@ Using the PC2E Framework:
 
 Present **2+ alternative approaches** to the user:
 
-```
+```text
 After re-analysis, I have identified [X] possible approaches:
 
 Option A: [Description]
@@ -182,7 +183,7 @@ The user must choose the path forward.
 
 **Escalation Decision Tree:**
 
-```
+```text
 If in DEBUG mode and stuck:
 → Escalate to ARCHITECT mode to re-evaluate the design
 
@@ -231,7 +232,7 @@ Change exactly ONE thing, then test. Never change multiple things simultaneously
 ## Example: Loop Detection and Breaking
 
 **Bad (Loop):**
-```
+```text
 Agent: I'll fix the database connection by updating the port to 5433.
 [Tests] → Still fails
 Agent: Let me try port 5434.
@@ -241,7 +242,7 @@ Agent: Let me try port 5435.
 ```
 
 **Good (Loop Detection + Breaking):**
-```
+```text
 Agent: I'll fix the database connection by updating the port to 5433.
 [Tests] → Still fails
 
@@ -272,12 +273,12 @@ Shall I proceed with this fix?
 When escalating due to a loop, you MUST transparently output the **exact sequence of logic that failed**.
 
 **Bad:**
-```
+```text
 I am stuck and need to escalate.
 ```
 
 **Good:**
-```
+```text
 Failure Transparency Report:
 
 Sequence of Logic:
@@ -320,7 +321,7 @@ which would have triggered escalation earlier.
 
 ## Quick Reference Card
 
-```
+```text
 LOOP DETECTED IF:
 ☐ Same error 2+ times
 ☐ Same file edited 3+ times for same issue

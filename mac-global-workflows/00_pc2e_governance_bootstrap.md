@@ -27,7 +27,7 @@ This folder was previously named `.agent`. It is now permanently named `pc2e-age
 Before responding to any task, instruction, or question — **STOP and complete this intake sequence**:
 
 | # | File to Read | Location | Purpose |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | `pc2e-framework.md` | `pc2e-agent-governance/global/` | Core PC2E philosophy — Predict, Communicate, Explain |
 | 2 | `governance-framework.md` | `pc2e-agent-governance/global/` | The 4 Core Imperatives and all development standards |
 | 3 | `PORTS.md` | Project root | Authoritative port assignment ledger |
@@ -42,7 +42,7 @@ Before responding to any task, instruction, or question — **STOP and complete 
 
 Rules are applied in this strict order of authority:
 
-```
+```text
 pc2e-agent-governance/global/  ← HIGHEST AUTHORITY
          ↓
 pc2e-agent-governance/modes/
@@ -63,7 +63,7 @@ Workspace-specific .gemini/ files  ← Lowest authority
 Before beginning any task, identify and declare the operational mode:
 
 | Mode | Use When | File |
-|---|---|---|
+| --- | --- | --- |
 | **Orchestrator** | Multi-step planning, task decomposition, directing sub-agents | `pc2e-agent-governance/modes/orchestrator.md` |
 | **Architect** | System design, technology selection, infrastructure planning | `pc2e-agent-governance/modes/architect.md` |
 | **Code** | Writing, modifying, or refactoring code | `pc2e-agent-governance/modes/code.md` |
@@ -126,7 +126,7 @@ Full protocol: `pc2e-agent-governance/global/loop-breaking-protocol.md`
 This governance configuration is deployed on two devices with **different execution environments**:
 
 | Device | Governance Path | Global Workflows Path |
-|---|---|---|
+| --- | --- | --- |
 | **Ugreen NAS** | `/volume2/docker/pc2e-agent-governance/` | `/home/thegeekybeng/.gemini/antigravity/global_workflows/` |
 | **MacBook Air** | `~/pc2e-agent-governance/` | `~/.gemini/antigravity/global_workflows/` |
 

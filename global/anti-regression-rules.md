@@ -1,10 +1,11 @@
-# Anti-Regression Rules
-
 ---
 trigger: always_on
 last_updated: 2026-03-19
 pc2e_version: 1.0
 ---
+
+# Anti-Regression Rules
+
 
 > These rules prevent the introduction of bugs, workarounds, and technical debt that cause previously working functionality to break.
 
@@ -23,7 +24,7 @@ pc2e_version: 1.0
 - Catch-all exception handlers that hide failures
 
 **Required Pattern:**
-```
+```text
 Observation → Root Cause Analysis → Proper Fix → Verification
 ```
 
@@ -239,7 +240,7 @@ result = normalize(value, min_value, max_value)
 **Scenario:** Modifying code without verifying it still works.
 
 **Example:**
-```
+```text
 Developer: "I updated the database connection string."
 [Deploys to production]
 [Everything breaks because connection string is wrong]
@@ -251,7 +252,7 @@ Developer: "I updated the database connection string."
 - Assumes changes work without evidence
 
 **Proper Fix:**
-```
+```text
 1. Update the database connection string
 2. Run connection test: `python test_connection.py`
 3. Verify successful connection in output

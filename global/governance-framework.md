@@ -1,10 +1,11 @@
-# Workspace Governance Framework
-
 ---
 trigger: always_on
 last_updated: 2026-03-19
 pc2e_version: 1.0
 ---
+
+# Workspace Governance Framework
+
 
 > This framework enforces good code development practices, documentation standards, and quality gates across all AI-assisted work in this workspace.
 
@@ -98,7 +99,7 @@ Every implementation MUST be production-quality from the first commit. No "we'll
 **BEFORE any work begins, the AI Agent MUST read and internalize these three files:**
 
 | # | File | Purpose | Relative Path |
-|---|------|---------|---------------|
+| --- | ------ | --------- | --------------- |
 | 1 | **PORTS.md** | Authoritative port assignment ledger | `PORTS.md` |
 | 2 | **Project_Context.md** | Service architecture and relationship map | `Project_Context.md` |
 | 3 | **SYSTEM_LOG.md** | Audit trail of all technical decisions | `SYSTEM_LOG.md` |

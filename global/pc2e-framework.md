@@ -1,10 +1,11 @@
-# PC2E Framework: Predict, Communicate, Explain
-
 ---
 trigger: always_on
 last_updated: 2026-03-19
 pc2e_version: 1.0
 ---
+
+# PC2E Framework: Predict, Communicate, Explain
+
 
 ## Overview
 
@@ -37,7 +38,7 @@ When confidence falls below 80%, the agent MUST:
 #### Examples
 
 **Good - High Confidence:**
-```
+```text
 Confidence: 95% - Root cause is a missing CORS header in nginx.conf:12.
 I verified this by:
 1. Reading the nginx error log showing CORS rejection
@@ -46,7 +47,7 @@ I verified this by:
 ```
 
 **Good - Low Confidence with Escalation:**
-```
+```text
 Confidence: 65% - The issue might be related to port conflicts.
 
 Missing context:
@@ -61,7 +62,7 @@ I cannot proceed without this information. Shall I:
 ```
 
 **Bad - No Confidence Statement:**
-```
+```text
 I'll fix the CORS issue by modifying nginx.conf.
 ```
 ❌ Missing: Confidence score, verification steps, missing context check
@@ -89,7 +90,7 @@ When selecting a tool or technology, briefly explain:
 #### Examples
 
 **Good - Assumption Broadcasting:**
-```
+```text
 Before implementing the authentication system, I'm declaring my core assumptions:
 1. The PostgreSQL database is accessible from the application network
 2. Redis is available for session storage
@@ -100,7 +101,7 @@ Proceeding with JWT-based authentication...
 ```
 
 **Good - Tool Transparency:**
-```
+```text
 I'm choosing TypeScript over JavaScript for this implementation because:
 - TypeScript provides compile-time type safety (reduces runtime errors by ~60%)
 - The existing codebase is TypeScript (consistency)
@@ -112,7 +113,7 @@ Alternatives considered:
 ```
 
 **Bad - No Communication:**
-```
+```text
 Implementing authentication with JWT...
 ```
 ❌ Missing: Assumptions, tool rationale, alternatives considered
@@ -125,7 +126,7 @@ Implementing authentication with JWT...
 
 #### Chain of Reasoning (CoR) Format
 
-```
+```text
 Observation → Hypothesis → Action
 ```
 
@@ -136,12 +137,12 @@ Observation → Hypothesis → Action
 #### Example: Debugging
 
 **Bad - No Reasoning Chain:**
-```
+```text
 Fixed the database connection issue.
 ```
 
 **Good - Complete Chain of Reasoning:**
-```
+```text
 Observation: Database queries are failing with "connection refused" error on port 5432.
 Hypothesis: PostgreSQL container is not running or is not exposed on the correct port.
 Action:
@@ -213,31 +214,31 @@ A decision that constrains future options or introduces technical debt:
 ## Anti-Patterns (Violations of PC2E)
 
 ### ❌ Proceeding Without Confidence Statement
-```
+```text
 I'll implement Redis caching for the API.
 ```
 **Fix**: State confidence and verify assumptions first
 
 ### ❌ Using Tools Without Rationale
-```
+```text
 Using PostgreSQL for the database.
 ```
 **Fix**: Explain why PostgreSQL over MySQL, MongoDB, etc.
 
 ### ❌ No Chain of Reasoning
-```
+```text
 Updated the Nginx config to fix the issue.
 ```
 **Fix**: Document Observation → Hypothesis → Action
 
 ### ❌ Implementing Limiting Choices Without Escalation
-```
+```text
 I'll hardcode the API key for now to unblock development.
 ```
 **Fix**: Escalate with alternatives (environment variables, secret store)
 
 ### ❌ Assuming Instead of Verifying
-```
+```text
 The port 8080 is available, so I'll use it.
 ```
 **Fix**: Read PORTS.md to verify before proceeding

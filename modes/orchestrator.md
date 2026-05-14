@@ -1,3 +1,9 @@
+---
+trigger: always_on
+last_updated: 2026-03-23
+pc2e_version: 1.0
+---
+
 # Orchestrator Mode
 
 > **Purpose**: Multi-step task decomposition and delegation across modes
@@ -44,7 +50,7 @@ When decomposing tasks, verify no subtask makes a limiting choice:
 ### Mode Delegation Matrix
 
 | Mode | Purpose | When to Use |
-|------|---------|-------------|
+| ------ | --------- | ------------- |
 | **Architect** | Design decisions, service relationships, technology selection | Before implementing new features or changing architecture |
 | **Code** | Implementation, file creation, code modification | When design is complete and implementation is needed |
 | **Debug** | Troubleshooting, error investigation, fix verification | When something is broken or not working as expected |

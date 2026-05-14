@@ -1,9 +1,11 @@
-# Tech Decision Record Template
-
 ---
 last_updated: 2026-03-19
 pc2e_version: 1.0
+trigger: always_on
 ---
+
+# Tech Decision Record Template
+
 
 > Use this template when documenting technology, library, or framework decisions. Copy this template into SYSTEM_LOG.md when adding new dependencies.
 
@@ -12,7 +14,7 @@ pc2e_version: 1.0
 ## Tech Decision: [Technology Name]
 
 | Field | Detail |
-|-------|--------|
+| ------- | -------- |
 | **Purpose** | What problem does this solve? |
 | **Implementation** | How is it used in this project? (file paths, config details) |
 | **Version** | Pinned version used (never use "latest") |
@@ -28,7 +30,7 @@ pc2e_version: 1.0
 ### Alternatives Considered
 
 | Alternative | Compatibility | Maintainability | Why Not Chosen |
-|-------------|:---:|:---:|----------------|
+| ------------- | :---: | :---: | ---------------- |
 | [Alt 1] | X/10 | X/10 | Reason |
 | [Alt 2] | X/10 | X/10 | Reason |
 | [Alt 3] | X/10 | X/10 | Reason |
@@ -100,7 +102,7 @@ How will we know if this technology choice was correct?
 ## Tech Decision: PostgreSQL 15
 
 | Field | Detail |
-|-------|--------|
+| ------- | -------- |
 | **Purpose** | Primary relational database for user data, transactions, and application state |
 | **Implementation** | Used in docker-compose.yml, connected via SQLAlchemy ORM in backend/database.py |
 | **Version** | 15.3-alpine |
@@ -114,7 +116,7 @@ How will we know if this technology choice was correct?
 ### Alternatives Considered
 
 | Alternative | Compatibility | Maintainability | Why Not Chosen |
-|-------------|:---:|:---:|----------------|
+| ------------- | :---: | :---: | ---------------- |
 | MySQL 8 | 8/10 | 8/10 | Weaker JSON support, licensing concerns |
 | MongoDB | 6/10 | 7/10 | Schema-less not suitable for transactional data |
 | SQLite | 9/10 | 6/10 | Not scalable for multi-user production use |
@@ -168,8 +170,8 @@ Review date: 2026-09-01 (6 months from implementation)
 - Backend API (SQLAlchemy ORM)
 - User authentication service
 - Transaction processing system
-```
-```
+```text
+
 
 ---
 
