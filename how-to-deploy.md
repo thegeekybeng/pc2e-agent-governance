@@ -503,13 +503,45 @@ Document the pinned version in your `SYSTEM_LOG.md`.
 
 **Cause:** Context window overflow. The governance files exceed what the IDE loads per session.
 
+#### Context-Window Budget — Tiered Loading Strategy
+
+Use this table to decide what to load based on your agent's context window size:
+
+| Tier | Context Window | Load These Files | Skip |
+| --- | --- | --- | --- |
+| **Tier 1 — Minimal** | < 16K tokens | `governance-framework.md`, `pc2e-framework.md`, `loop-breaking-protocol.md` | All mode files, anti-regression, documentation |
+| **Tier 2 — Standard** | 16K–32K tokens | Tier 1 + `anti-regression-rules.md` + active mode file only | Inactive modes, `mandatory-documentation.md` |
+| **Tier 3 — Full** | 32K–128K tokens | All `global/` files + active mode + project context | Inactive modes |
+| **Tier 4 — Optimal** | 128K+ tokens | All governance files + all modes + full project context | Nothing |
+
+**Approximate token cost per file** (uncompressed):
+
+| File | Approx. Tokens |
+| --- | --- |
+| `governance-framework.md` | ~3,500 |
+| `pc2e-framework.md` | ~2,800 |
+| `loop-breaking-protocol.md` | ~2,000 |
+| `anti-regression-rules.md` | ~3,200 |
+| `mandatory-documentation.md` | ~3,000 |
+| `prompt-injection-defence.md` | ~2,500 |
+| `privacy-pdpa.md` | ~2,800 |
+| `token-optimisation.md` | ~2,200 |
+| Any single mode file | ~2,000–3,000 |
+| **Total (all global + all modes)** | **~35,000** |
+
 **Resolution:**
+
 1. Use the hybrid deployment (Method C) — put only project context in workspace rules
-2. Reduce global rules to the most critical files only:
-   - `governance-framework.md` (imperatives)
-   - `pc2e-framework.md` (PC2E pillars)
-   - `loop-breaking-protocol.md` (loop prevention)
-3. Reference mode-specific files inline at task start rather than loading all modes globally
+2. Apply prompt caching at the governance block boundary (see `global/token-optimisation.md`)
+3. For Tier 1/2 contexts, load mode files inline at task start rather than globally:
+
+```markdown
+## Task Context
+Current mode: [paste contents of modes/code.md here]
+```
+
+4. Use hierarchical references: reference file paths without embedding content
+   when your IDE supports on-demand file loading
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-03-19
+last_updated: 2026-05-15
 pc2e_version: 1.0
 trigger: always_on
 ---
