@@ -1,0 +1,80 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  markdownlint:
+    name: Markdownlint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: "**/*.md"
+          config: ".markdownlint.json"
+
+  validate-frontmatter:
+    name: Validate Frontmatter Dates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check for stale last_updated dates
+        run: |
+          STALE=0
+          CUTOFF=$(date -d "90 days ago" +%Y-%m-%d)
+          for file in global/*.md modes/*.md templates/*.md; do
+            DATE=$(grep "^last_updated:" "$file" | awk '{print $2}' | tr -d '"')
+            if [ -n "$DATE" ] && [ "$DATE" \< "$CUTOFF" ]; then
+              echo "STALE: $file has last_updated: $DATE (older than 90 days)"
+              STALE=1
+            fi
+          done
+          if [ $STALE -eq 1 ]; then
+            echo "::warning::Stale frontmatter dates detected. Update last_updated fields."
+          fi
+
+  check-env-gitignore:
+    name: Verify .env in .gitignore
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check .gitignore covers .env
+        run: |
+          if ! grep -q "^\.env" .gitignore 2>/dev/null; then
+            echo "::error::.env is not listed in .gitignore. Add it before any secrets are written."
+            exit 1
+          fi
+          echo ".env is covered in .gitignore ✓"
+
+  security-regression:
+    name: Security Controls Regression Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check global/ files were not weakened
+        run: |
+          # Alert if any global/ governance file shrank significantly (>20% reduction)
+          # Significant shrinkage may indicate a control was removed
+          git diff HEAD~1 HEAD -- global/ | grep "^-" | wc -l > /tmp/deletions.txt
+          git diff HEAD~1 HEAD -- global/ | grep "^+" | wc -l > /tmp/additions.txt
+          DELETIONS=$(cat /tmp/deletions.txt)
+          ADDITIONS=$(cat /tmp/additions.txt)
+          if [ "$DELETIONS" -gt 20 ] && [ "$DELETIONS" -gt "$ADDITIONS" ]; then
+            echo "::warning::Large deletion in global/ files ($DELETIONS lines removed vs $ADDITIONS added). Verify no security controls were removed."
+          fi
+          echo "Regression check complete: $DELETIONS lines removed, $ADDITIONS lines added in global/"

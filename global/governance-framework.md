@@ -140,6 +140,38 @@ Every implementation MUST be production-quality from the first commit. No "we'll
 - **`.env` in `.gitignore`**: Every project MUST list `.env` and `.env.*` in `.gitignore` BEFORE writing any secrets to those files. Verify with: `grep -q "^\.env" .gitignore || echo "WARNING: .env not in .gitignore"`
 - **No root containers**: All Docker services MUST run as non-privileged users.
 - **Multi-stage Docker builds**: Production images MUST use multi-stage builds.
+- **Rate limiting**: All HTTP-facing services MUST implement per-endpoint rate limiting. Document limits in the project's `SECURITY_FRAMEWORK.md`.
+- **Authentication**: Implementations MUST use bcrypt at minimum cost factor 12. Persistent login lockout MUST be implemented after 5 failed attempts. Lockout state MUST be stored in a database, not in memory.
+- **PII handling**: All Singapore-specific PII patterns MUST be detected and masked before logging. See `global/privacy-pdpa.md` for regex patterns and PDPA obligations.
+
+**Canary Token Policy:**
+
+Governance rule files MUST contain a canary token — a synthetic value that triggers
+an alert if it appears in an external request log, indicating system prompt exfiltration.
+
+```text
+FRAMEWORK_CANARY: PCE2-CANARY-2026-7f3a9b2c-DO-NOT-USE-IN-REQUESTS
+```
+
+If this value appears in any application request log, API call, or external system:
+the governance context has been exfiltrated. Stop the session, rotate all credentials,
+and log the incident in SYSTEM_LOG.md.
+
+**Human-in-the-Loop (HITL) Gate:**
+
+The following operations require explicit human approval before execution, regardless
+of the agent's confidence score. A confidence of 100% does NOT bypass this gate.
+
+| Operation Class | Examples | Required Action |
+| --- | --- | --- |
+| Destructive file operations | `rm -rf`, bulk deletes, overwriting backups | State the exact command and target; wait for explicit "yes, proceed" |
+| Production deployments | `docker compose up` on prod, nginx reload on prod | State the deployment scope; wait for explicit confirmation |
+| Secret rotation | Changing API keys, certificates, database passwords | Document the rotation plan; wait for explicit approval |
+| Schema migrations | ALTER TABLE, DROP COLUMN, index changes on live data | State the impact and reversibility; wait for explicit confirmation |
+| External API calls with write effects | Webhooks, payment APIs, messaging sends | State what will be sent to whom; wait for explicit approval |
+
+Every HITL decision MUST be logged in SYSTEM_LOG.md with: what was approved,
+who approved it, when, and what was executed as a result.
 
 **Code Quality:**
 

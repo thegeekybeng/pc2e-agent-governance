@@ -133,6 +133,26 @@ All implementations are evaluated against these four non-negotiable imperatives,
 
 ---
 
+## OWASP LLM Top 10 — Framework Compliance
+
+This framework is itself an AI governance layer and is directly exposed to LLM-specific
+risks. The table below documents the mitigation status for each OWASP LLM Top 10 category.
+
+| # | Risk | Status | Mitigation |
+| --- | --- | --- | --- |
+| LLM01 | Prompt Injection | ✅ Mitigated | `global/prompt-injection-defence.md` — 7 defensive layers including system prompt isolation, role separation, and instruction salting |
+| LLM02 | Insecure Output Handling | ✅ Mitigated | `templates/output-schema.md` — mode-specific output schemas with required confidence scoring |
+| LLM03 | Training Data Poisoning | ➖ N/A | Framework contains no training pipelines; consuming projects must evaluate independently |
+| LLM04 | Model Denial of Service | ⚠️ Partial | `global/token-optimisation.md` — context budget management; no explicit DoS rate-limiting at framework layer |
+| LLM05 | Supply Chain Vulnerabilities | ✅ Mitigated | `CODEOWNERS` — owner review required on all `global/` changes; `.github/workflows/lint.yml` — automated validation |
+| LLM06 | Sensitive Information Disclosure | ✅ Mitigated | `global/privacy-pdpa.md` — Blind Execution Standard, PII masking regex, PDPA controls |
+| LLM07 | Insecure Plugin Design | ✅ Mitigated | `CODEOWNERS` — mode files (loaded as plugins) require owner approval before merge |
+| LLM08 | Excessive Agency | ✅ Mitigated | HITL gate in `global/governance-framework.md` — unconditional human approval for destructive operations |
+| LLM09 | Overreliance | ✅ Mitigated | 80% confidence threshold in `global/pc2e-framework.md` — mandatory escalation below threshold |
+| LLM10 | Model Theft | ➖ N/A | Framework governs agent behaviour, not model weights; model protection is infrastructure-layer |
+
+---
+
 ## Documentation
 
 Comprehensive documentation for each layer of the framework is located in the following directories:

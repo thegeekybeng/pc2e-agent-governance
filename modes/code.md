@@ -89,11 +89,15 @@ If you are about to:
 - **Secrets management**: NEVER hardcode secrets, API keys, or credentials in code (use environment variables or secret stores)
 - **Dependency audit**: After adding or updating dependencies, run `npm audit` / `pip audit` and resolve any HIGH or CRITICAL vulnerabilities before proceeding
 - **CORS policy**: Production CORS configurations MUST use specific origins — NEVER use wildcard `*`
-- **Security headers**: All web-facing services MUST set:
-  - `Content-Security-Policy`
-  - `X-Frame-Options: DENY`
-  - `X-Content-Type-Options: nosniff`
-  - `Strict-Transport-Security`
+- **Security headers**: All web-facing services MUST set all 8 headers:
+  - `Content-Security-Policy` — restrict resource origins
+  - `X-Frame-Options: DENY` — prevent clickjacking
+  - `X-Content-Type-Options: nosniff` — prevent MIME sniffing
+  - `Strict-Transport-Security` — enforce HTTPS
+  - `Referrer-Policy: strict-origin-when-cross-origin` — limit referrer leakage
+  - `Permissions-Policy` — disable unused browser APIs (camera, mic, geolocation)
+  - `X-XSS-Protection: 0` — explicitly disabled; modern browsers use CSP instead (setting to 1 can introduce vulnerabilities in old IE)
+  - `Cross-Origin-Embedder-Policy: require-corp` — isolate cross-origin resources
 
 ### Zero Technical Debt Standards (Core Imperative #3)
 

@@ -1,0 +1,25 @@
+# CODEOWNERS
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# Global governance files require review from the framework owner before any merge.
+# Changes to these files propagate to every project consuming the framework.
+
+# Global governance — all changes require owner review
+/global/                    @thegeekybeng
+
+# Templates — structural changes require owner review
+/templates/                 @thegeekybeng
+
+# Security and audit documents
+SECURITY.md                 @thegeekybeng
+SECURITY_AUDIT.md           @thegeekybeng
+FULL_AUDIT.md               @thegeekybeng
+
+# Deployment guide — changes affect all adopting teams
+how-to-deploy.md            @thegeekybeng
+
+# Modes — require owner review (precedence tier 2)
+/modes/                     @thegeekybeng
+
+# CI/CD configuration
+/.github/                   @thegeekybeng

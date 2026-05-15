@@ -433,3 +433,73 @@ Violations result in:
 - Logged incident in SYSTEM_LOG.md
 
 **Remember:** Future you (and other developers) will thank present you for good documentation.
+
+---
+
+## SYSTEM_LOG.md — Monitoring and Maintenance
+
+### Session Tagging
+
+Every SYSTEM_LOG.md entry MUST begin with a session identifier to enable tracing of
+all decisions made within a single agent session:
+
+```markdown
+## [SESSION: GOV-YYYY-MM-DD-XXXX] — <brief description>
+```
+
+The session ID format: `GOV-` + date + `-` + 4-character alphanumeric suffix.
+Generate the suffix from the first task of the session. Keep it consistent across
+all entries from the same session.
+
+### Standard Log Queries
+
+Use these commands to inspect and monitor SYSTEM_LOG.md:
+
+```bash
+# View the last 20 entries
+tail -n 100 SYSTEM_LOG.md
+
+# Find all entries from a specific session
+grep -A 20 "SESSION: GOV-2026-05-15" SYSTEM_LOG.md
+
+# Find all HITL decisions
+grep -A 5 "HITL" SYSTEM_LOG.md
+
+# Find all security-related entries
+grep -A 10 "security\|canary\|PII\|injection\|breach" SYSTEM_LOG.md -i
+
+# Find all entries with LOW confidence
+grep -B 2 "LOW_CONFIDENCE\|confidence.*0\.[0-6]" SYSTEM_LOG.md -i
+
+# Count entries by month
+grep "^## \[SESSION:" SYSTEM_LOG.md | grep -o "GOV-[0-9-]*" | cut -d- -f2,3 | sort | uniq -c
+```
+
+### Anomaly Patterns to Review
+
+Review SYSTEM_LOG.md when you see any of the following patterns:
+
+| Pattern | Action |
+| --- | --- |
+| Multiple consecutive LOW_CONFIDENCE entries | Governance context may not be loaded correctly — verify deployment |
+| HITL gate bypassed (no log entry for a destructive operation) | Investigate immediately — this is a compliance violation |
+| Canary token string in any log entry | Treat as security incident — rotate credentials |
+| Session produces no SYSTEM_LOG.md entries | Agent may be operating outside governance — review session |
+| Entries referencing PII values | Immediate redaction required — review masking process |
+
+### Log Rotation Policy
+
+- Entries remain in SYSTEM_LOG.md for **90 days** from the entry date
+- After 90 days: move to `SYSTEM_LOG_ARCHIVE.md` (create if it doesn't exist)
+- Archive format: same as SYSTEM_LOG.md, prefixed with `[ARCHIVED YYYY-MM-DD]`
+- Archives are retained for **1 year** from the archive date, then deleted
+- Never delete entries that relate to unresolved security incidents
+
+Rotation command:
+
+```bash
+# Manually archive entries older than 90 days (run monthly)
+CUTOFF=$(date -d "90 days ago" "+%Y-%m-%d")
+echo "Archiving entries before $CUTOFF from SYSTEM_LOG.md"
+# Manual process: move sessions with dates < CUTOFF to SYSTEM_LOG_ARCHIVE.md
+```
