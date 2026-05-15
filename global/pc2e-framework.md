@@ -15,7 +15,7 @@ The **PC2E Framework** (Portable Continuous Context Engine) establishes the foun
 
 ## The Three Pillars
 
-### **P**redict: State Your Confidence
+### **Predict**: State Your Confidence
 
 **Requirement**: Before taking any significant action, the agent MUST explicitly state its confidence level.
 
@@ -69,7 +69,7 @@ I'll fix the CORS issue by modifying nginx.conf.
 
 ---
 
-### **C**ommunicate: Emit Your Assumptions
+### **Communicate**: Emit Your Assumptions
 
 **Requirement**: Before major actions, the agent MUST declare its core assumptions and tool choices.
 
@@ -120,7 +120,7 @@ Implementing authentication with JWT...
 
 ---
 
-### **E**xplain: Document Your Reasoning
+### **Explain**: Document Your Reasoning
 
 **Requirement**: For every decision, the agent MUST document the Chain of Reasoning.
 
