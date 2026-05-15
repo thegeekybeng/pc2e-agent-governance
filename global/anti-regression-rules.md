@@ -6,7 +6,6 @@ pc2e_version: 1.0
 
 # Anti-Regression Rules
 
-
 > These rules prevent the introduction of bugs, workarounds, and technical debt that cause previously working functionality to break.
 
 ---
@@ -18,12 +17,14 @@ pc2e_version: 1.0
 **Never mask errors.** Find and eliminate the underlying cause.
 
 **Forbidden Patterns:**
+
 - Wrapping errors in try/catch without fixing the bug
 - Adding timeouts to "work around" race conditions
 - Disabling security checks to make tests pass
 - Catch-all exception handlers that hide failures
 
 **Required Pattern:**
+
 ```text
 Observation → Root Cause Analysis → Proper Fix → Verification
 ```
@@ -35,11 +36,13 @@ Observation → Root Cause Analysis → Proper Fix → Verification
 **Never modify a file without reading it first** — even if you "know" what's in it from earlier in the session.
 
 **Why:**
+
 - Files may have changed
 - Memory from earlier in session may be inaccurate
 - Assumptions lead to breaking existing functionality
 
 **Required:**
+
 - Use the Read tool on every file before editing
 - Verify current state matches assumptions
 - Check for dependencies that might break
@@ -51,6 +54,7 @@ Observation → Root Cause Analysis → Proper Fix → Verification
 **If you feel tempted to wrap something in a catch-all, the error is telling you something important.**
 
 **Forbidden:**
+
 ```python
 try:
     critical_operation()
@@ -59,6 +63,7 @@ except:
 ```
 
 **Required:**
+
 ```python
 try:
     critical_operation()
@@ -77,19 +82,21 @@ except SpecificException as e:
 > **A workaround that will need to be "cleaned up later" is technical debt in disguise.**
 
 **Before implementing a workaround, ask:**
+
 1. Why can't I fix this properly right now?
-2. What is blocking the proper fix?
-3. How much time would the proper fix take?
-4. What is the cost of the workaround (maintenance, confusion, brittleness)?
+1. What is blocking the proper fix?
+1. How much time would the proper fix take?
+1. What is the cost of the workaround (maintenance, confusion, brittleness)?
 
 **If you must use a workaround:**
+
 1. Document it in `SYSTEM_LOG.md` with:
    - Why the workaround was necessary
    - What the proper fix would be
    - Timeline for implementing the proper fix
    - Risks introduced by the workaround
-2. Add a TODO comment in the code linking to the SYSTEM_LOG.md entry
-3. Set a calendar reminder for the proper fix
+1. Add a TODO comment in the code linking to the SYSTEM_LOG.md entry
+1. Set a calendar reminder for the proper fix
 
 ---
 
@@ -98,16 +105,18 @@ except SpecificException as e:
 **Make ONE change, test it, verify the result. Do NOT make multiple changes simultaneously.**
 
 **Why:**
+
 - Multiple simultaneous changes make debugging impossible
 - Cannot isolate which change caused a regression
 - Violates scientific method (change one variable at a time)
 
 **Required Process:**
+
 1. Make a single logical change
-2. Test the change
-3. Verify no regressions
-4. Commit (if using version control)
-5. Repeat for next change
+1. Test the change
+1. Verify no regressions
+1. Commit (if using version control)
+1. Repeat for next change
 
 ---
 
@@ -116,6 +125,7 @@ except SpecificException as e:
 **Never assume a change worked. Always verify.**
 
 **Verification Checklist:**
+
 - [ ] Run the specific functionality that was changed
 - [ ] Run tests for related functionality (regression testing)
 - [ ] Check terminal output for warnings or errors
@@ -123,6 +133,7 @@ except SpecificException as e:
 - [ ] Confirm performance hasn't degraded
 
 **Example:**
+
 ```bash
 # Don't just run the command
 docker-compose up -d
@@ -142,18 +153,21 @@ docker logs <container>  # Check for errors
 **Scenario:** Under time pressure, implementing a hack instead of the proper solution.
 
 **Example:**
+
 ```python
 # Quick fix: hardcode the value
 API_KEY = "sk-1234567890abcdef"
 ```
 
 **Why it's wrong:**
+
 - Creates security vulnerability
 - Makes code non-portable
 - Requires manual updates
 - Will be forgotten and cause production incidents
 
 **Proper Fix:**
+
 ```python
 # Proper fix: use environment variables
 API_KEY = os.getenv("API_KEY")
@@ -168,6 +182,7 @@ if not API_KEY:
 **Scenario:** Catching exceptions without handling them properly.
 
 **Example:**
+
 ```python
 def save_data(data):
     try:
@@ -177,12 +192,14 @@ def save_data(data):
 ```
 
 **Why it's wrong:**
+
 - Hides critical failures
 - Makes debugging impossible
 - Data loss is invisible
 - Violates principle of explicit error handling
 
 **Proper Fix:**
+
 ```python
 def save_data(data):
     try:
@@ -203,6 +220,7 @@ def save_data(data):
 **Scenario:** Duplicating code instead of abstracting into a reusable function.
 
 **Example:**
+
 ```python
 # In file1.py
 result = (value - min_value) / (max_value - min_value)
@@ -215,12 +233,14 @@ result = (value - min_value) / (max_value - min_value)
 ```
 
 **Why it's wrong:**
+
 - Bug fixes must be applied in multiple places
 - Inconsistencies creep in over time
 - Violates DRY (Don't Repeat Yourself)
 - Maintenance nightmare
 
 **Proper Fix:**
+
 ```python
 # In utils.py
 def normalize(value, min_value, max_value):
@@ -240,6 +260,7 @@ result = normalize(value, min_value, max_value)
 **Scenario:** Modifying code without verifying it still works.
 
 **Example:**
+
 ```text
 Developer: "I updated the database connection string."
 [Deploys to production]
@@ -247,18 +268,20 @@ Developer: "I updated the database connection string."
 ```
 
 **Why it's wrong:**
+
 - Preventable failures reach production
 - No verification before deployment
 - Assumes changes work without evidence
 
 **Proper Fix:**
+
 ```text
 1. Update the database connection string
-2. Run connection test: `python test_connection.py`
-3. Verify successful connection in output
-4. Run full test suite
-5. Verify all tests pass
-6. THEN deploy
+1. Run connection test: `python test_connection.py`
+1. Verify successful connection in output
+1. Run full test suite
+1. Verify all tests pass
+1. THEN deploy
 ```
 
 ---
@@ -288,17 +311,17 @@ Before declaring any task complete, verify:
    - What change caused it
    - Why the regression wasn't caught
 
-2. **Fix properly**:
+1. **Fix properly**:
    - Revert the breaking change if critical
    - Implement proper fix
    - Add regression test to prevent recurrence
 
-3. **Update SYSTEM_LOG.md**:
+1. **Update SYSTEM_LOG.md**:
    - Log the regression incident
    - Document root cause
    - Document prevention measures added
 
-4. **Learn and improve**:
+1. **Learn and improve**:
    - Update testing procedures
    - Add to anti-regression checklist
    - Share lessons learned
@@ -308,6 +331,7 @@ Before declaring any task complete, verify:
 ## Enforcement
 
 Violations of anti-regression rules result in:
+
 - Task marked as incomplete
 - Mandatory rework to eliminate regression
 - Documentation of the incident in `SYSTEM_LOG.md`

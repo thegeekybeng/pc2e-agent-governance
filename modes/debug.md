@@ -66,16 +66,19 @@ See [global/loop-breaking-protocol.md](../global/loop-breaking-protocol.md) for 
 ### PC2E Integration
 
 #### Predict
+
 - **Score confidence** (0-100%) in your root cause hypothesis
 - If confidence < 80%, list exact missing context before proceeding
 - **Predict fix success rate**: What is the likelihood this fix resolves the issue?
 
 #### Communicate
+
 - **State your hypothesis** before attempting the fix
 - **Declare what you plan to change** and why
 - **Emit terminal output** to the user (do not hide errors or warnings)
 
 #### Explain
+
 - **Document Chain of Reasoning**: Symptom → Hypothesis → Root Cause → Fix
 - **Explain why other hypotheses were ruled out** (show the debugging process)
 - **Make the fix auditable**: Why this fix instead of others?
@@ -109,6 +112,7 @@ See [global/loop-breaking-protocol.md](../global/loop-breaking-protocol.md) for 
 ## Integration with Global Rules
 
 This mode inherits and extends:
+
 - [PC2E Framework](../global/pc2e-framework.md) — Apply Predict/Communicate/Explain to debugging process
 - [Governance Framework](../global/governance-framework.md) — Fixes must satisfy the 4 Core Imperatives
 - [Anti-Regression Rules](../global/anti-regression-rules.md) — Fixes must not introduce new bugs

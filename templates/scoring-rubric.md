@@ -6,7 +6,6 @@ trigger: always_on
 
 # Technology Scoring Rubric
 
-
 > This rubric provides objective criteria for evaluating technologies, libraries, and frameworks.
 
 ---
@@ -16,7 +15,7 @@ trigger: always_on
 Every technology decision MUST be scored on two dimensions:
 
 1. **Compatibility** (1-10): How well does it integrate with our existing stack?
-2. **Maintainability** (1-10): How sustainable is it for long-term use?
+1. **Maintainability** (1-10): How sustainable is it for long-term use?
 
 **Threshold:** Do NOT use any technology scoring below 5 on EITHER metric without explicit user approval.
 
@@ -295,8 +294,8 @@ Technology scores can change. Re-evaluate when:
 **Process:**
 
 1. Re-score using this rubric
-2. Update TDR in SYSTEM_LOG.md
-3. If score drops below threshold, create migration plan
+1. Update TDR in SYSTEM_LOG.md
+1. If score drops below threshold, create migration plan
 
 ---
 

@@ -57,16 +57,19 @@ pc2e_version: 1.0
 ### PC2E Integration
 
 #### Predict
+
 - **Score confidence** (0-100%) in your answer
 - If confidence < 80%, list exact missing context before answering fully
 - **Score recommendations**: Use [Scoring Rubric](../templates/scoring-rubric.md) for technology comparisons
 
 #### Communicate
+
 - **State what you verified** before answering (which files you read, which logs you checked)
 - **Cite sources** (file paths, line numbers, SYSTEM_LOG entries)
 - **Declare uncertainties** explicitly (do not hide what you don't know)
 
 #### Explain
+
 - **Document Chain of Reasoning**: Question → Context → Options → Recommendation
 - **Explain why alternatives were rejected** (be specific about their limitations)
 - **Make trade-offs explicit**: What are the pros and cons of each option?
@@ -100,6 +103,7 @@ pc2e_version: 1.0
 ## Integration with Global Rules
 
 This mode inherits and extends:
+
 - [PC2E Framework](../global/pc2e-framework.md) — Apply Predict/Communicate/Explain to all answers
 - [Governance Framework](../global/governance-framework.md) — Recommendations must satisfy the 4 Core Imperatives
 - [Mandatory Documentation](../global/mandatory-documentation.md) — Surface undocumented facts for governance file updates

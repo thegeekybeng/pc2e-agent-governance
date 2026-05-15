@@ -33,6 +33,7 @@ pc2e_version: 1.0
 - **New files, not modifications**: When asked to create a new `docker-compose.yml` file, always create a NEW file (do not modify existing unless explicitly requested)
 - **Header timestamp**: Every `docker-compose.yml` file MUST include a hash, date, and timestamp at the top for record-keeping
   ```yaml
+
   # docker-compose.yml
   # Created: 2026-03-19 20:30:00
   # Hash: <git-commit-hash or unique-id>
@@ -63,27 +64,32 @@ pc2e_version: 1.0
 ## Workflow Steps
 
 ### Step 1: Pre-Flight Context Gathering
+
 1. Read `Project_Context.md` to understand the ecosystem
-2. Read all project files to understand the codebase
-3. Read `PORTS.md` to know available ports
-4. Read `SYSTEM_LOG.md` for past decisions
+1. Read all project files to understand the codebase
+1. Read `PORTS.md` to know available ports
+1. Read `SYSTEM_LOG.md` for past decisions
 
 ### Step 2: Clarification (If Needed)
+
 - If user instructions are unclear, STOP and ASK for clarification
 - Do NOT proceed with assumptions that could be wrong
 
 ### Step 3: Create and Validate
+
 - Create the compose file with proper header timestamp
 - Run `docker compose config` to validate syntax
 - Read the output to verify configuration
 
 ### Step 4: Testing (MANDATORY)
+
 - **Sandboxed testing**: Test before declaring success
 - Run `docker compose up -d` and verify services start
 - Check `docker logs <service>` for each service
 - **Read terminal output**: Monitor output yourself, not the user
 
 ### Step 5: Documentation
+
 - Update `PORTS.md` with new port allocations
 - Update `Project_Context.md` with new services
 - Update `SYSTEM_LOG.md` with timestamp, decisions, and rationale
@@ -111,6 +117,7 @@ pc2e_version: 1.0
 ## Integration with Global Rules
 
 This workflow inherits:
+
 - [PC2E Framework](../global/pc2e-framework.md)
 - [Governance Framework](../global/governance-framework.md)
 - [Mandatory Documentation](../global/mandatory-documentation.md)

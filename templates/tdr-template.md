@@ -6,7 +6,6 @@ trigger: always_on
 
 # Tech Decision Record Template
 
-
 > Use this template when documenting technology, library, or framework decisions. Copy this template into SYSTEM_LOG.md when adding new dependencies.
 
 ---
@@ -40,17 +39,20 @@ trigger: always_on
 ### Decision Rationale
 
 **Why this technology was chosen:**
+
 - [Reason 1]
 - [Reason 2]
 - [Reason 3]
 
 **Trade-offs accepted:**
+
 - [Trade-off 1]
 - [Trade-off 2]
 
 **Risks and mitigations:**
-- [Risk 1]: [Mitigation]
-- [Risk 2]: [Mitigation]
+
+- Risk 1: [Mitigation]
+- Risk 2: [Mitigation]
 
 ---
 
@@ -59,12 +61,13 @@ trigger: always_on
 **If this technology needs to be replaced in the future:**
 
 1. [Step 1]
-2. [Step 2]
-3. [Step 3]
+1. [Step 2]
+1. [Step 3]
 
 **Estimated effort:** [hours/days/weeks]
 
 **Alternative technologies that could replace this:**
+
 - [Alternative 1]
 - [Alternative 2]
 
@@ -85,10 +88,12 @@ How will we know if this technology choice was correct?
 ### Dependencies
 
 **This technology depends on:**
+
 - Dependency 1
 - Dependency 2
 
 **These components depend on this technology:**
+
 - Component 1
 - Component 2
 
@@ -142,10 +147,10 @@ How will we know if this technology choice was correct?
 
 If PostgreSQL needs to be replaced:
 1. Export schema via pg_dump
-2. Convert schema to target database format
-3. Migrate data using ETL pipeline
-4. Update ORM connection strings
-5. Comprehensive testing
+1. Convert schema to target database format
+1. Migrate data using ETL pipeline
+1. Update ORM connection strings
+1. Comprehensive testing
 
 Estimated effort: 2-3 weeks for full migration
 
@@ -172,7 +177,6 @@ Review date: 2026-09-01 (6 months from implementation)
 - Transaction processing system
 ```text
 
-
 ---
 
 ## Scoring Reference
@@ -182,12 +186,14 @@ See [Scoring Rubric](scoring-rubric.md) for detailed evaluation criteria.
 **Quick Reference:**
 
 **Compatibility (1-10):**
+
 - 10: Native integration, zero configuration
 - 7-9: Works well with minor configuration
 - 4-6: Requires significant adaptation
 - 1-3: Incompatible or requires major workarounds
 
 **Maintainability (1-10):**
+
 - 10: Active community, frequent releases, excellent docs
 - 7-9: Stable, regular updates, good docs
 - 4-6: Infrequent updates, sparse docs
@@ -200,11 +206,13 @@ See [Scoring Rubric](scoring-rubric.md) for detailed evaluation criteria.
 ## When to Create a TDR
 
 **Required for:**
+
 - All new libraries, frameworks, or tools
 - Major version upgrades of existing dependencies
 - Changing from one technology to another
 
 **Not required for:**
+
 - Standard library features (built into the language)
 - Temporary debugging tools
 - Developer-only utilities (not in production)
@@ -214,6 +222,7 @@ See [Scoring Rubric](scoring-rubric.md) for detailed evaluation criteria.
 ## TDR Maintenance
 
 **Update the TDR when:**
+
 - Version is upgraded
 - Maintenance status changes
 - Security vulnerabilities discovered
@@ -221,6 +230,7 @@ See [Scoring Rubric](scoring-rubric.md) for detailed evaluation criteria.
 - Migration becomes necessary
 
 **Archive TDRs when:**
+
 - Technology is fully removed from the project
 - Move to "Historical Decisions" section of SYSTEM_LOG.md
 - Do NOT delete (preserves institutional knowledge)

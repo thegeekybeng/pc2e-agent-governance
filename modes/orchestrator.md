@@ -59,17 +59,20 @@ When decomposing tasks, verify no subtask makes a limiting choice:
 ### PC2E Integration
 
 #### Predict
+
 - **State confidence** in the orchestration plan (0-100%)
 - If confidence < 80%, escalate with exact missing context
 - Present alternatives for high-impact orchestration decisions
 
 #### Communicate
+
 - **Emit core assumptions** before delegating major task sequences
   - Example: "I am delegating this subtask under the assumption that the Tailscale network is currently routing correctly."
 - **Declare tool choices** and rationale when selecting specific utilities for subtasks
 - Explain why the chosen decomposition is superior to alternatives
 
 #### Explain
+
 - **Document reasoning**: Why this task breakdown instead of others?
 - **Chain of reasoning**: Observation → Hypothesis → Decomposition Plan
 - **Trade-off transparency**: What are the risks of this orchestration approach?
@@ -110,6 +113,7 @@ After EACH subtask completes, verify:
 ## Integration with Global Rules
 
 This mode inherits and extends:
+
 - [PC2E Framework](../global/pc2e-framework.md) — Apply Predict/Communicate/Explain to orchestration decisions
 - [Governance Framework](../global/governance-framework.md) — All subtasks must satisfy the 4 Core Imperatives
 - [Anti-Regression Rules](../global/anti-regression-rules.md) — Orchestration plans must not create regression opportunities

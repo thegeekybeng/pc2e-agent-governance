@@ -13,14 +13,14 @@ pc2e_version: 1.0
 ## Table of Contents
 
 1. [Prerequisites](#1-prerequisites)
-2. [Deployment Concepts](#2-deployment-concepts)
-3. [Method A — Global IDE Rules](#3-method-a--global-ide-rules)
-4. [Method B — Workspace Rules](#4-method-b--workspace-rules)
-5. [Method C — Hybrid Deployment (Recommended)](#5-method-c--hybrid-deployment-recommended)
-6. [IDE-Specific Instructions](#6-ide-specific-instructions)
-7. [Verifying the Deployment](#7-verifying-the-deployment)
-8. [Maintaining the Framework](#8-maintaining-the-framework)
-9. [Troubleshooting](#9-troubleshooting)
+1. [Deployment Concepts](#2-deployment-concepts)
+1. [Method A — Global IDE Rules](#3-method-a--global-ide-rules)
+1. [Method B — Workspace Rules](#4-method-b--workspace-rules)
+1. [Method C — Hybrid Deployment (Recommended)](#5-method-c--hybrid-deployment-recommended)
+1. [IDE-Specific Instructions](#6-ide-specific-instructions)
+1. [Verifying the Deployment](#7-verifying-the-deployment)
+1. [Maintaining the Framework](#8-maintaining-the-framework)
+1. [Troubleshooting](#9-troubleshooting)
 
 ---
 
@@ -50,6 +50,7 @@ Understanding the two rule layers is essential before deploying.
 Global rules are loaded by the IDE for **every project and every session**, regardless of which workspace is open. They define the universal baseline behavior of your AI agent.
 
 **Use global rules for:**
+
 - The PC2E pillars (Predict, Communicate, Explain)
 - The four core imperatives (Scalability, Security, Zero Debt, Privacy)
 - The loop-breaking protocol
@@ -63,6 +64,7 @@ Global rules are loaded by the IDE for **every project and every session**, rega
 Workspace rules are loaded only when the IDE opens a **specific project directory**. They extend or specialize the global rules for that project's context.
 
 **Use workspace rules for:**
+
 - Project-specific architecture context (`Project_Context.md`)
 - Port assignments (`PORTS.md`)
 - The project's audit trail (`SYSTEM_LOG.md`)
@@ -92,7 +94,7 @@ This method installs the framework's universal governance layer so it applies to
 Clone the repository to a stable, permanent location on your machine. Do not clone it inside a project directory.
 
 ```bash
-# Recommended locations:
+# Recommended locations
 # macOS / Linux
 git clone https://github.com/thegeekybeng/pc2e-agent-governance.git ~/.agent-governance
 
@@ -436,8 +438,8 @@ What is your confidence threshold for mandatory escalation?
 **If the agent does not respond with the above**, the governance files have not been loaded. Re-check:
 
 1. File paths in your rules file are correct and accessible
-2. The IDE has been reloaded after configuration
-3. The rules file is in the correct location for your IDE (see [Section 6](#6-ide-specific-instructions))
+1. The IDE has been reloaded after configuration
+1. The rules file is in the correct location for your IDE (see [Section 6](#6-ide-specific-instructions))
 
 ---
 
@@ -492,10 +494,11 @@ Document the pinned version in your `SYSTEM_LOG.md`.
 **Cause:** Rules file not found or not loaded by the IDE.
 
 **Resolution:**
+
 1. Verify the file path is correct for your IDE (see [Section 6](#6-ide-specific-instructions))
-2. Confirm the file has read permissions: `ls -la ~/.cursorrules`
-3. Restart the IDE completely (not just the window)
-4. Start a new conversation — some IDEs do not reload rules mid-session
+1. Confirm the file has read permissions: `ls -la ~/.cursorrules`
+1. Restart the IDE completely (not just the window)
+1. Start a new conversation — some IDEs do not reload rules mid-session
 
 ---
 
@@ -532,15 +535,15 @@ Use this table to decide what to load based on your agent's context window size:
 **Resolution:**
 
 1. Use the hybrid deployment (Method C) — put only project context in workspace rules
-2. Apply prompt caching at the governance block boundary (see `global/token-optimisation.md`)
-3. For Tier 1/2 contexts, load mode files inline at task start rather than globally:
+1. Apply prompt caching at the governance block boundary (see `global/token-optimisation.md`)
+1. For Tier 1/2 contexts, load mode files inline at task start rather than globally:
 
 ```markdown
 ## Task Context
 Current mode: [paste contents of modes/code.md here]
 ```
 
-4. Use hierarchical references: reference file paths without embedding content
+1. Use hierarchical references: reference file paths without embedding content
    when your IDE supports on-demand file loading
 
 ---
@@ -559,10 +562,11 @@ Review the workspace rules file and ensure it only adds project-specific context
 **Cause:** File was renamed or moved in a framework update.
 
 **Resolution:**
+
 1. Run `git -C ~/.agent-governance log --oneline -5` to see recent changes
-2. Run `git -C ~/.agent-governance diff HEAD~1 --name-only` to see renamed files
-3. Update your rules file paths accordingly
-4. Log the path change in `SYSTEM_LOG.md`
+1. Run `git -C ~/.agent-governance diff HEAD~1 --name-only` to see renamed files
+1. Update your rules file paths accordingly
+1. Log the path change in `SYSTEM_LOG.md`
 
 ---
 

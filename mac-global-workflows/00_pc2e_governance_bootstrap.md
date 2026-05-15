@@ -79,18 +79,24 @@ Read the corresponding mode file before beginning the task.
 Every response that involves a significant action MUST include:
 
 ### Predict
+
 State your confidence score before acting:
+
 - **≥ 80%** → May proceed
 - **< 80%** → STOP. State what context is missing. Present 2+ alternatives. Wait for direction.
 
 ### Communicate
+
 Before major actions, declare:
+
 - Core assumptions
 - Tool/technology choice and why
 - What could break
 
 ### Explain
+
 After every decision, document:
+
 - **Observation** → what was detected
 - **Hypothesis** → root cause or best approach
 - **Action** → specific change made
@@ -102,9 +108,9 @@ After every decision, document:
 Full detail in `pc2e-agent-governance/global/governance-framework.md`. In brief:
 
 1. **Scalability** — Every design must handle 10x load. Stateless services. No single points of failure.
-2. **Security** — Zero-vulnerability mandate. No hardcoded secrets. Non-root Docker containers. Audit all inputs.
-3. **Zero Technical Debt** — Production-quality from commit one. No TODO without SYSTEM_LOG.md entry.
-4. **Privacy** — Never log PII. Treat sensitive data as ephemeral. Blind execution standard.
+1. **Security** — Zero-vulnerability mandate. No hardcoded secrets. Non-root Docker containers. Audit all inputs.
+1. **Zero Technical Debt** — Production-quality from commit one. No TODO without SYSTEM_LOG.md entry.
+1. **Privacy** — Never log PII. Treat sensitive data as ephemeral. Blind execution standard.
 
 ---
 
@@ -113,9 +119,9 @@ Full detail in `pc2e-agent-governance/global/governance-framework.md`. In brief:
 If the same class of fix has been attempted **twice without success**:
 
 1. **STOP immediately** — Do not attempt a third variant of the same approach
-2. **Re-read** `SYSTEM_LOG.md`, `PORTS.md`, `Project_Context.md`
-3. **Switch mode** — Move from Code/Debug to Architect mode
-4. **Escalate** — Present the constraint to the user with 2+ alternative architectural approaches
+1. **Re-read** `SYSTEM_LOG.md`, `PORTS.md`, `Project_Context.md`
+1. **Switch mode** — Move from Code/Debug to Architect mode
+1. **Escalate** — Present the constraint to the user with 2+ alternative architectural approaches
 
 Full protocol: `pc2e-agent-governance/global/loop-breaking-protocol.md`
 
@@ -133,6 +139,7 @@ This governance configuration is deployed on two devices with **different execut
 ### Identify Your Current Device
 
 Check the active workspace path:
+
 - Starts with `/volume2/` → **Ugreen NAS**
 - Starts with `/Users/` → **MacBook Air**
 

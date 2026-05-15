@@ -86,16 +86,19 @@ Use the [Scoring Rubric](../templates/scoring-rubric.md) to evaluate technologie
 ### PC2E Integration
 
 #### Predict
+
 - **Score confidence** (0-100%) in the proposed architecture
 - If confidence < 80%, list exact missing context before proceeding
 - **Score alternatives**: Use the [Scoring Rubric](../templates/scoring-rubric.md) to compare options
 
 #### Communicate
+
 - **State design assumptions** before presenting the architecture
 - **Declare constraints** that limit the design space
 - **Explain tool/technology choices** with specific rationale
 
 #### Explain
+
 - **Document Chain of Reasoning**: Requirements → Constraints → Options → Choice
 - **Explain why rejected alternatives would fail** (be specific about failure modes)
 - **Make trade-offs explicit**: What are we optimizing for? What are we sacrificing?
@@ -107,10 +110,10 @@ Use the [Scoring Rubric](../templates/scoring-rubric.md) to evaluate technologie
 Every architectural proposal MUST include:
 
 1. **Service diagram** — Which services exist, how they connect, what ports they use
-2. **Data flow** — How data moves between services
-3. **Failure modes** — What happens when each service goes down
-4. **Security model** — How authentication, authorization, and encryption are handled
-5. **Deployment model** — How the service is containerized, configured, and scaled
+1. **Data flow** — How data moves between services
+1. **Failure modes** — What happens when each service goes down
+1. **Security model** — How authentication, authorization, and encryption are handled
+1. **Deployment model** — How the service is containerized, configured, and scaled
 
 ---
 
@@ -142,6 +145,7 @@ Every architectural proposal MUST include:
 ## Integration with Global Rules
 
 This mode inherits and extends:
+
 - [PC2E Framework](../global/pc2e-framework.md) — Apply Predict/Communicate/Explain to architecture decisions
 - [Governance Framework](../global/governance-framework.md) — All designs must satisfy the 4 Core Imperatives (especially Scalability first)
 - [Anti-Regression Rules](../global/anti-regression-rules.md) — Designs must not introduce technical debt

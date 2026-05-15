@@ -6,7 +6,6 @@ trigger: always_on
 
 # System Log Entry Template
 
-
 > Use this template for all entries in SYSTEM_LOG.md. Consistency enables easy searching and auditing.
 
 ---
@@ -64,9 +63,9 @@ trigger: always_on
 - **Hypothesis:** JWT tokens provide stateless authentication suitable for horizontal scaling
 - **Action:**
   1. Created JWT handler with HS256 signing
-  2. Implemented middleware to validate tokens on protected routes
-  3. Added user_id claim to JWT payload
-  4. Set token expiration to 24 hours
+  1. Implemented middleware to validate tokens on protected routes
+  1. Added user_id claim to JWT payload
+  1. Set token expiration to 24 hours
 
 **Result:**
 - Successfully authenticating users
@@ -101,8 +100,8 @@ trigger: always_on
 - **Hypothesis:** Connection pooling not configured correctly; connections not being returned to pool after use.
 - **Action:**
   1. Added explicit connection pool configuration (pool_size=20, max_overflow=10)
-  2. Implemented context managers to ensure connections always returned
-  3. Added connection pool monitoring
+  1. Implemented context managers to ensure connections always returned
+  1. Added connection pool monitoring
 
 **Result:**
 - No pool exhaustion after 24 hours of operation
@@ -138,13 +137,13 @@ trigger: always_on
 - **Observation:** Monolithic application becoming difficult to scale; auth-related changes requiring full application restart
 - **Hypothesis:** Extracting authentication into separate microservice will enable:
   1. Independent scaling of auth workload
-  2. Faster deployment cycles (auth changes don't require full app restart)
-  3. Better separation of concerns
+  1. Faster deployment cycles (auth changes don't require full app restart)
+  1. Better separation of concerns
 - **Action:**
   1. Created new FastAPI service for authentication
-  2. Moved JWT handling, user management to auth service
-  3. Updated main application to call auth service via internal API
-  4. Implemented service-to-service authentication
+  1. Moved JWT handling, user management to auth service
+  1. Updated main application to call auth service via internal API
+  1. Implemented service-to-service authentication
 
 **Result:**
 - Auth service deployed and handling 100% of authentication requests
@@ -209,9 +208,9 @@ trigger: always_on
 - **Hypothesis:** Memory leak in database or misconfigured memory limits.
 - **Action:**
   1. Immediate: Restarted database container (service restored 20:22 UTC)
-  2. Investigation: Analyzed container resource usage over past week
-  3. Root Cause: Database `shared_buffers` set to 8GB, but container limited to 4GB RAM
-  4. Fix: Reduced `shared_buffers` to 1GB, increased container memory limit to 8GB
+  1. Investigation: Analyzed container resource usage over past week
+  1. Root Cause: Database `shared_buffers` set to 8GB, but container limited to 4GB RAM
+  1. Fix: Reduced `shared_buffers` to 1GB, increased container memory limit to 8GB
 
 **Result:**
 - Database stable for 48+ hours post-fix
@@ -263,7 +262,8 @@ trigger: always_on
 
 ## Best Practices
 
-### DO:
+### DO
+
 ✅ Log immediately after completing the change
 ✅ Include all affected files with line numbers
 ✅ Use Chain of Reasoning (Observation → Hypothesis → Action)
@@ -271,7 +271,8 @@ trigger: always_on
 ✅ Link to related entries or issues
 ✅ Timestamp in UTC
 
-### DON'T:
+### DON'T
+
 ❌ Batch multiple unrelated changes into one entry
 ❌ Omit the "why" (rationale for the change)
 ❌ Skip verification results
@@ -291,6 +292,7 @@ Use consistent keywords for easy searching:
 - **Rollback:** `ROLLBACK`, `reverted`, `undone`
 
 **Example:**
+
 ```markdown
 ## 2026-03-14 10:00 UTC - SECURITY: Patched SQL Injection Vulnerability
 
@@ -305,10 +307,11 @@ Use consistent keywords for easy searching:
 ### Archive Old Entries
 
 Once SYSTEM_LOG.md exceeds 10,000 lines:
+
 1. Create `SYSTEM_LOG_ARCHIVE_YYYY.md`
-2. Move entries older than 12 months to archive
-3. Keep recent entries in main SYSTEM_LOG.md
-4. Update index/table of contents
+1. Move entries older than 12 months to archive
+1. Keep recent entries in main SYSTEM_LOG.md
+1. Update index/table of contents
 
 ### Regular Reviews
 
