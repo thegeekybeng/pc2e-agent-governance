@@ -50,7 +50,7 @@ reference_platforms: MPS-Connect, CWI, CodLabStudio
 
 ### Requirement 1 — OWASP LLM Top 10 Compliance Table
 
-**Status: ❌ MISSING**
+Status: ❌ MISSING
 
 No OWASP LLM Top 10 table exists anywhere in the repository. On MPS-Connect, CWI, and
 CodLabStudio, this table lives in each project's `README.md` with a status column
@@ -60,7 +60,7 @@ This framework is itself an AI governance layer — it is arguably more exposed 
 specific risks than the application platforms it governs, because it defines the rules
 that shape AI agent behaviour. The OWASP LLM Top 10 table is directly applicable.
 
-**Affected OWASP LLM categories with framework-specific exposure:**
+Affected OWASP LLM categories with framework-specific exposure:
 
 | OWASP LLM Risk | Exposure in this Framework |
 | --- | --- |
@@ -75,7 +75,7 @@ that shape AI agent behaviour. The OWASP LLM Top 10 table is directly applicable
 
 ### Requirement 2 — Prompt Injection Defence
 
-**Status: ❌ MISSING**
+Status: ❌ MISSING
 
 No prompt injection section exists in any file. This is the highest-severity gap specific
 to an AI governance framework. If an adversarial user can inject instructions into a
@@ -100,33 +100,35 @@ defences. Layers 2–6 are absent.
 
 ### Requirement 3 — Output Handling: Schema and Enum Validation
 
-**Status: ⚠️ PARTIAL**
+Status: ⚠️ PARTIAL
 
-**Present:** The PC2E confidence scoring system mandates structured output (confidence
+Present: The PC2E confidence scoring system mandates structured output (confidence
 score + tier + caveat). The loop-breaking protocol mandates a specific declaration format.
 These are informal output schemas enforced by convention, not by validation.
 
-**Missing:**
+Missing:
+
 - No formal output schema definition (JSON Schema, Zod, or equivalent)
 - No enum validation on confidence bands (0.0–1.0 is stated but not enforced)
 - No rejection policy for outputs that deviate from the mandated format
 - No downstream validation layer that catches malformed agent outputs before they
   are acted upon
 
-**Recommendation:** Define a `templates/output-schema.md` that formalises expected
+Recommendation: Define a `templates/output-schema.md` that formalises expected
 response structures for each mode, with explicit field types and validation rules.
 
 ---
 
 ### Requirement 4 — PII Masking: SG Patterns with Regex
 
-**Status: ⚠️ PARTIAL**
+Status: ⚠️ PARTIAL
 
-**Present:** `governance-framework.md` prohibits logging PII (email addresses, phone
+Present: `governance-framework.md` prohibits logging PII (email addresses, phone
 numbers, API keys, passwords). The Blind Execution Standard (Core Imperative 4) treats
 sensitive data as ephemeral. These are clear prohibitions.
 
-**Missing:**
+Missing:
+
 - No Singapore-specific PII patterns (NRIC format `S/T/F/G + 7 digits + checksum`,
   SingPass IDs, CPF numbers, HDB unit formats)
 - No regex patterns for automated masking or detection
@@ -142,20 +144,21 @@ routinely encountered.
 
 ### Requirement 5 — Human-in-the-Loop Gate
 
-**Status: ⚠️ PARTIAL**
+Status: ⚠️ PARTIAL
 
-**Present:** The 80% confidence threshold mandates agent escalation to the user before
+Present: The 80% confidence threshold mandates agent escalation to the user before
 proceeding. The Decision Escalation Policy (PC2E: Predict) and the loop-breaking protocol
 both require explicit human approval at decision forks. These are substantive HITL controls.
 
-**Missing:**
+Missing:
+
 - The term "human-in-the-loop" is never used — the control exists but is not
   labelled or indexed as a HITL gate, making it invisible to security reviewers
 - No definition of which action categories are *always* HITL regardless of confidence
   (e.g., destructive operations like `rm -rf`, production deployments, secret rotation)
 - No audit trail requirement for HITL decisions (who approved, what was approved, when)
 
-**Recommendation:** Add a `HITL gate` section to `governance-framework.md` that formally
+Recommendation: Add a `HITL gate` section to `governance-framework.md` that formally
 names the control, lists unconditional HITL triggers, and mandates SYSTEM_LOG.md entries
 for every HITL decision.
 
@@ -163,7 +166,7 @@ for every HITL decision.
 
 ### Requirement 6 — Rate Limiting
 
-**Status: ➖ N/A (Framework Layer)**
+Status: ➖ N/A (Framework Layer)
 
 The framework contains no HTTP endpoints. Rate limiting is not applicable at the
 framework layer.
@@ -173,7 +176,7 @@ rate limiting. MPS-Connect and CWI implement per-endpoint rate limits and docume
 in their respective `SECURITY_FRAMEWORK.md`. The governance framework should reference
 this requirement so projects that adopt it inherit the mandate.
 
-**Recommendation:** Add a one-line reference in `global/governance-framework.md`
+Recommendation: Add a one-line reference in `global/governance-framework.md`
 Section 2.2 (Security by Default): "All HTTP-facing services MUST implement per-endpoint
 rate limiting. Document limits in `SECURITY_FRAMEWORK.md`."
 
@@ -181,7 +184,7 @@ rate limiting. Document limits in `SECURITY_FRAMEWORK.md`."
 
 ### Requirement 7 — Canary Token Detection
 
-**Status: ❌ MISSING**
+Status: ❌ MISSING
 
 No canary token policy exists anywhere in the repository. Canary tokens are embedded
 synthetic values (fake API keys, fake credentials, fake file paths) that trigger alerts
@@ -198,14 +201,14 @@ platforms — it should model the same standard.
 
 ### Requirement 8 — Authentication and Brute-Force Hardening
 
-**Status: ➖ N/A (Framework Layer) — Partially**
+Status: ➖ N/A (Framework Layer) — Partially
 
 The framework has no authentication layer. The gap is that it does not mandate an
 authentication standard for projects that adopt it, beyond the general statement in
 `code.md` that "every API endpoint MUST require authentication." No brute-force
 protection requirement is stated.
 
-**Recommendation:** Add to `global/governance-framework.md`: "Authentication implementations
+Recommendation: Add to `global/governance-framework.md`: "Authentication implementations
 MUST use bcrypt at minimum cost factor 12. Persistent login lockout MUST be implemented
 after 5 failed attempts. Lockout state MUST be stored in a database, not in memory."
 
@@ -213,7 +216,7 @@ after 5 failed attempts. Lockout state MUST be stored in a database, not in memo
 
 ### Requirement 9 — Input Validation Middleware
 
-**Status: ➖ N/A (Framework Layer)**
+Status: ➖ N/A (Framework Layer)
 
 No runtime code exists in this repository. `code.md` mandates input validation
 (parameterized queries, HTML escaping) at the project level, which is the correct
@@ -225,20 +228,21 @@ No gap at the framework layer. Consuming projects must implement per the `code.m
 
 ### Requirement 10 — Container Security: Full Standards Table
 
-**Status: ⚠️ PARTIAL**
+Status: ⚠️ PARTIAL
 
-**Present:** `code.md` and `governance-framework.md` mandate:
+Present: `code.md` and `governance-framework.md` mandate:
+
 - Non-root containers (`USER` directive required)
 - Multi-stage Docker builds
 - Pinned image versions (no `latest`)
 - Health checks
 
-**Missing:** No formal container security **standards table** as used in MPS-Connect,
+Missing: No formal container security **standards table** as used in MPS-Connect,
 CWI, and CodLabStudio. Those platforms publish a table of 8+ container controls with
 status per service. This framework mandates the controls but does not provide a
 reusable table template for consuming projects.
 
-**Recommendation:** Add `templates/container-security-table.md` with the standard 8-row
+Recommendation: Add `templates/container-security-table.md` with the standard 8-row
 table (non-root, multi-stage, pinned versions, health checks, read-only filesystem,
 no privileged mode, resource limits, secrets via env vars) that projects can adopt as-is.
 
@@ -246,21 +250,23 @@ no privileged mode, resource limits, secrets via env vars) that projects can ado
 
 ### Requirement 11 — HTTP Security Headers: All 8 Headers
 
-**Status: ⚠️ PARTIAL**
+Status: ⚠️ PARTIAL
 
-**Present in `code.md`** (4 of 8 headers):
+Present in `code.md` (4 of 8 headers):
+
 - `Content-Security-Policy`
 - `X-Frame-Options: DENY`
 - `X-Content-Type-Options: nosniff`
 - `Strict-Transport-Security`
 
-**Missing (4 headers not mentioned anywhere):**
+Missing (4 headers not mentioned anywhere):
+
 - `Referrer-Policy: strict-origin-when-cross-origin`
 - `Permissions-Policy` (formerly `Feature-Policy`)
 - `X-XSS-Protection: 0` (explicitly set to disabled — modern browsers use CSP instead)
 - `Cross-Origin-Embedder-Policy: require-corp`
 
-**Recommendation:** Update `code.md` Security Standards to list all 8 headers with
+Recommendation: Update `code.md` Security Standards to list all 8 headers with
 their required values. Add a note on `X-XSS-Protection: 0` explaining the modern
 browser deprecation rationale.
 
@@ -268,12 +274,13 @@ browser deprecation rationale.
 
 ### Requirement 12 — Supply Chain and CI/CD Audit
 
-**Status: ❌ MISSING**
+Status: ❌ MISSING
 
 No CI/CD pipeline exists in the repository (no `.github/workflows/`, no `Makefile`
 CI target, no `pre-commit` hooks). No dependency audit workflow is documented.
 
 The framework mandates `npm audit` / `pip audit` in `code.md` but:
+
 - Does not mandate when audits must run (pre-commit? pre-merge? scheduled?)
 - Does not define acceptable vulnerability thresholds (HIGH/CRITICAL block merge)
 - Does not mandate dependency pinning in a lock file (`package-lock.json`, `uv.lock`)
@@ -282,7 +289,7 @@ The framework mandates `npm audit` / `pip audit` in `code.md` but:
 For a governance framework distributed via Git, supply chain risk is real: a malicious
 commit to the framework repo propagates to every project consuming it via `git pull`.
 
-**Recommendations:**
+Recommendations:
 
 1. Add `.github/workflows/lint.yml` running `markdownlint` on all `.md` files
 2. Add a `CODEOWNERS` file designating who can approve changes to `global/` files
@@ -293,12 +300,13 @@ commit to the framework repo propagates to every project consuming it via `git p
 
 ### Requirement 13 — Privacy and PDPA Controls
 
-**Status: ⚠️ PARTIAL**
+Status: ⚠️ PARTIAL
 
-**Present:** Core Imperative 4 (Privacy & Data Minimisation) prohibits PII in logs.
+Present: Core Imperative 4 (Privacy & Data Minimisation) prohibits PII in logs.
 The Blind Execution Standard treats sensitive data as ephemeral.
 
-**Missing:**
+Missing:
+
 - No explicit reference to Singapore's PDPA (Personal Data Protection Act)
 - No data retention policy (how long SYSTEM_LOG.md entries are kept)
 - No data subject rights provision (right to erasure from logs)
@@ -308,7 +316,7 @@ The Blind Execution Standard treats sensitive data as ephemeral.
 Given the framework's primary deployment context (Singapore civic platforms), PDPA
 compliance is a legal requirement, not a best-practice recommendation.
 
-**Recommendation:** Add `global/privacy-pdpa.md` aligned with MPS-Connect's existing
+Recommendation: Add `global/privacy-pdpa.md` aligned with MPS-Connect's existing
 privacy controls: local inference requirement, IP anonymisation, consent gate, data
 minimisation mandate, and SYSTEM_LOG.md retention policy.
 
@@ -316,13 +324,14 @@ minimisation mandate, and SYSTEM_LOG.md retention policy.
 
 ### Requirement 14 — AI Audit Log and Monitoring Commands
 
-**Status: ⚠️ PARTIAL**
+Status: ⚠️ PARTIAL
 
-**Present:** `mandatory-documentation.md` mandates `SYSTEM_LOG.md` updates after every
+Present: `mandatory-documentation.md` mandates `SYSTEM_LOG.md` updates after every
 change. The log format includes timestamp, summary, affected files, chain of reasoning,
 and confidence score.
 
-**Missing:**
+Missing:
+
 - No monitoring commands (the reference platforms provide `tail -f`, `grep ERROR`,
   `docker stats` commands in their README)
 - No log rotation policy for SYSTEM_LOG.md (unbounded growth over time)
@@ -332,7 +341,7 @@ and confidence score.
 - No session tagging (each agent session is not uniquely identified in the log,
   making it impossible to trace a specific session's decisions)
 
-**Recommendation:** Add a `monitoring` section to `mandatory-documentation.md` with:
+Recommendation: Add a `monitoring` section to `mandatory-documentation.md` with:
 standard log queries, a session ID tagging requirement, and log rotation guidance
 (archive entries older than 90 days to `SYSTEM_LOG_ARCHIVE.md`).
 
@@ -340,19 +349,20 @@ standard log queries, a session ID tagging requirement, and log rotation guidanc
 
 ### Requirement 15 — Development Checklist with [BLOCK] Merge Gates
 
-**Status: ❌ MISSING**
+Status: ❌ MISSING
 
 No development checklist with explicit `[BLOCK]` merge gate designations exists.
 The reference platforms use a checklist format where certain items carry a `[BLOCK]`
 label indicating that the PR cannot merge until the item is satisfied.
 
 The framework has exit criteria checklists in each mode file, but:
+
 - They do not use `[BLOCK]` / `[WARN]` severity designations
 - They do not specify who is responsible for verifying each item
 - They do not integrate with any automated gate (CI check, GitHub status check)
 - There is no master pre-merge checklist that consolidates all mode-level requirements
 
-**Recommendation:** Create `templates/merge-checklist.md` with the standard checklist
+Recommendation: Create `templates/merge-checklist.md` with the standard checklist
 used by the reference platforms, adapted for governance framework changes:
 
 ```markdown
@@ -380,7 +390,7 @@ from a single-user governance layer to a team-distributed or open-source standar
 
 ### Scale Level 1 — Current State (Single Owner, Private Repo)
 
-**Hardening required now (before any external sharing):**
+Hardening required now (before any external sharing):
 
 | Priority | Action | Effort |
 | --- | --- | --- |
@@ -468,19 +478,19 @@ Target: **12 ✅ Full | 0 ⚠️ Partial | 0 ❌ Missing | 3 ➖ N/A**
 
 ### Sprint 2 — Controls Completion (P1, ~1 day)
 
-5. Complete HTTP headers in `code.md` (4 missing)
-6. Add canary token policy to `global/governance-framework.md`
-7. Create `templates/merge-checklist.md` with `[BLOCK]` gates
-8. Create `templates/container-security-table.md`
-9. Add HITL gate formal definition to `governance-framework.md`
+1. Complete HTTP headers in `code.md` (4 missing)
+2. Add canary token policy to `global/governance-framework.md`
+3. Create `templates/merge-checklist.md` with `[BLOCK]` gates
+4. Create `templates/container-security-table.md`
+5. Add HITL gate formal definition to `governance-framework.md`
 
 ### Sprint 3 — Automation and Monitoring (P2, ~1 day)
 
-10. Add `.github/workflows/lint.yml`
-11. Add log monitoring section to `mandatory-documentation.md`
-12. Add output schema template to `templates/output-schema.md`
-13. Add `SECURITY.md` (responsible disclosure)
-14. Add SG PII regex patterns to `governance-framework.md`
+1. Add `.github/workflows/lint.yml`
+2. Add log monitoring section to `mandatory-documentation.md`
+3. Add output schema template to `templates/output-schema.md`
+4. Add `SECURITY.md` (responsible disclosure)
+5. Add SG PII regex patterns to `governance-framework.md`
 
 ---
 
