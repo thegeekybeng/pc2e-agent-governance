@@ -118,16 +118,19 @@ If you are about to:
 ### PC2E Integration
 
 #### Predict
+
 - **State confidence** (0-100%) in your implementation approach
 - If confidence < 80%, escalate with exact missing context
 - **Identify risk zones**: Which parts of this implementation are most likely to break?
 
 #### Communicate
+
 - **Emit core assumptions** before major code changes
 - **Declare tool/library choices** and rationale
 - **State the impact zone**: Which files and services will be affected?
 
 #### Explain
+
 - **Document Chain of Reasoning**: Problem → Constraint → Options → Implementation Choice
 - **Explain why rejected alternatives would fail** (be specific about failure modes)
 - **Code comments explain "Why"**: Business logic and architectural reasons, not just "What"
@@ -163,6 +166,7 @@ If you are about to:
 ## Integration with Global Rules
 
 This mode inherits and extends:
+
 - [PC2E Framework](../global/pc2e-framework.md) — Apply Predict/Communicate/Explain to implementation decisions
 - [Governance Framework](../global/governance-framework.md) — All code must satisfy the 4 Core Imperatives
 - [Anti-Regression Rules](../global/anti-regression-rules.md) — Implementation must not create regression opportunities
