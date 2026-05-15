@@ -1,6 +1,6 @@
 ---
 trigger: always_on
-last_updated: 2026-03-19
+last_updated: 2026-05-15
 pc2e_version: 1.0
 ---
 
@@ -133,6 +133,7 @@ Every implementation MUST be production-quality from the first commit. No "we'll
 
 **Security by Default:**
 - **No hardcoded secrets**: Environment variables for ALL credentials, API keys, and sensitive configuration. Use `.env` files.
+- **`.env` in `.gitignore`**: Every project MUST list `.env` and `.env.*` in `.gitignore` BEFORE writing any secrets to those files. Verify with: `grep -q "^\.env" .gitignore || echo "WARNING: .env not in .gitignore"`
 - **No root containers**: All Docker services MUST run as non-privileged users.
 - **Multi-stage Docker builds**: Production images MUST use multi-stage builds.
 
