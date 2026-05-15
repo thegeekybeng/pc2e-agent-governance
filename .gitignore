@@ -1,4 +1,48 @@
-# Not for Public View
+# PC2E Agent Governance Framework — .gitignore
+# Files in this repository are public governance documentation.
+# This file excludes internal operational artifacts and secrets.
 
-VALIDATION_REPORT.md
+# ─── Secrets ──────────────────────────────────────────────────────────────────
+.env
+.env.*
+*.pem
+*.key
+*.cert
+
+# ─── Internal operational artifacts (NAS/instance-specific) ──────────────────
+# These are project-instance files — not part of the governance standard itself
+sync-to-mac.sh
+SYSTEM_LOG.md
+SYSTEM_LOG_ARCHIVE.md
+
+# ─── Superseded internal audit artifacts ──────────────────────────────────────
+# FULL_AUDIT.md and SECURITY_AUDIT.md are canonical — these are legacy internals
+AUDIT_REPORT.md
 MIGRATION_STATUS.md
+VALIDATION_REPORT.md
+
+# ─── Temporary and editor files ───────────────────────────────────────────────
+*.tmp
+*.temp
+*_backup.*
+*_old.*
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ─── Logs ─────────────────────────────────────────────────────────────────────
+logs/
+*.log
+
+# ─── Dependency and build artifacts ───────────────────────────────────────────
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.pyc
+.cache/
+
+# ─── IDE settings ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
