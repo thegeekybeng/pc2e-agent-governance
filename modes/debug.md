@@ -23,7 +23,6 @@ pc2e_version: 1.0
 - [ ] Score the hypothesis (PC2E Mandate) — Explicitly state a Confidence Score (0-100%) for your root-cause hypothesis (e.g., `Confidence: 85% - Root cause is a missing CORS header`)
 
 > **Threshold Rule**: If your confidence is < 80%, you MUST list the exact context you lack before taking action.
-
 > **Violation Consequence**: Skipping this gate may cause new regressions while attempting to fix the original issue.
 
 ---

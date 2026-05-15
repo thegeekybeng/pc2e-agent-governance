@@ -32,8 +32,8 @@ pc2e_version: 1.0
 
 - **New files, not modifications**: When asked to create a new `docker-compose.yml` file, always create a NEW file (do not modify existing unless explicitly requested)
 - **Header timestamp**: Every `docker-compose.yml` file MUST include a hash, date, and timestamp at the top for record-keeping
-  ```yaml
 
+  ```yaml
   # docker-compose.yml
   # Created: 2026-03-19 20:30:00
   # Hash: <git-commit-hash or unique-id>

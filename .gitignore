@@ -16,7 +16,9 @@ SYSTEM_LOG.md
 SYSTEM_LOG_ARCHIVE.md
 
 # ─── Superseded internal audit artifacts ──────────────────────────────────────
-# FULL_AUDIT.md and SECURITY_AUDIT.md are canonical — these are legacy internals
+FULL_AUDIT.md
+SECURITY_AUDIT.md
+SECURITY.md
 AUDIT_REPORT.md
 MIGRATION_STATUS.md
 VALIDATION_REPORT.md

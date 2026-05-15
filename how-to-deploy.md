@@ -77,7 +77,7 @@ Workspace rules are loaded only when the IDE opens a **specific project director
 
 When both layers are active, rules are applied in this order:
 
-```
+```text
 Global Rules → Workspace Rules → Local Overrides
 ```
 
@@ -269,7 +269,7 @@ The hybrid approach places universal governance in global rules and project-spec
 
 ### Architecture
 
-```
+```text
 Global Rules (applies everywhere)
 └── governance-framework.md    ← 4 Core Imperatives
 └── pc2e-framework.md          ← Predict / Communicate / Explain
@@ -421,7 +421,7 @@ touch CLAUDE.md  # populate per Method B
 
 After deploying, issue the following test prompt to your AI agent:
 
-```
+```text
 What governance framework are you operating under?
 List the four core imperatives in priority order.
 What is your confidence threshold for mandatory escalation?
