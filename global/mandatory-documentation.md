@@ -6,7 +6,6 @@ pc2e_version: 1.0
 
 # Mandatory Documentation Standards
 
-
 > Documentation is not optional. It is a core deliverable that must be completed before any task is considered done.
 
 ---
@@ -28,6 +27,7 @@ These files are the authoritative source of truth for the workspace. They MUST b
 **Purpose:** Audit trail of all technical decisions, changes, and incidents.
 
 **When to Update:**
+
 - After EVERY successful implementation (immediately, not batched)
 - After discovering and fixing bugs
 - After making architectural decisions
@@ -38,6 +38,7 @@ These files are the authoritative source of truth for the workspace. They MUST b
 See [System Log Entry Template](../templates/system-log-entry-template.md)
 
 **Minimum Contents:**
+
 - Timestamp (UTC)
 - Summary of change
 - Affected files (complete list)
@@ -46,6 +47,7 @@ See [System Log Entry Template](../templates/system-log-entry-template.md)
 - Verification steps taken
 
 **Example Entry:**
+
 ```markdown
 ## 2026-03-19 14:32 UTC - Fixed Database Connection Issue
 
@@ -75,11 +77,13 @@ See [System Log Entry Template](../templates/system-log-entry-template.md)
 **Purpose:** Authoritative ledger of all port assignments across all services.
 
 **When to Update:**
+
 - Before assigning a new port to any service
 - After changing a service's port
 - After removing a service
 
 **Required Format:**
+
 ```markdown
 | Port | Service | Purpose | Status |
 |------|---------|---------|--------|
@@ -90,6 +94,7 @@ See [System Log Entry Template](../templates/system-log-entry-template.md)
 ```
 
 **Rules:**
+
 - ALWAYS read PORTS.md before assigning a port
 - NEVER assume a port is available
 - Document port ranges for service groups
@@ -102,12 +107,14 @@ See [System Log Entry Template](../templates/system-log-entry-template.md)
 **Purpose:** High-level architecture map showing service relationships and dependencies.
 
 **When to Update:**
+
 - After adding a new service
 - After changing service relationships
 - After modifying authentication/authorization flow
 - After changing data flow between services
 
 **Required Contents:**
+
 - Service inventory (what exists)
 - Service relationships (what depends on what)
 - Data flow diagrams (how data moves)
@@ -121,6 +128,7 @@ See [System Log Entry Template](../templates/system-log-entry-template.md)
 ### Inline Comments: The "Why", Not the "What"
 
 **Bad (documents what the code does):**
+
 ```python
 # Loop through users
 for user in users:
@@ -129,6 +137,7 @@ for user in users:
 ```
 
 **Good (documents why/business logic):**
+
 ```python
 # Send password reset emails only to users who requested them in the last 24 hours
 # to prevent abuse and comply with GDPR data minimization
@@ -202,6 +211,7 @@ score = (
 See [TDR Template](../templates/tdr-template.md) for the standard format.
 
 **Minimum Contents:**
+
 - What problem does this technology solve?
 - What alternatives were considered?
 - Why were alternatives rejected?
@@ -219,6 +229,7 @@ See [TDR Template](../templates/tdr-template.md) for the standard format.
 ### ❌ BAD: "I'll document it later"
 
 Documentation drift is a form of technical debt. By the time "later" arrives:
+
 - You've forgotten the reasoning
 - Context has changed
 - The documentation never gets written
@@ -228,6 +239,7 @@ Documentation drift is a form of technical debt. By the time "later" arrives:
 **The Rule:** Documentation is part of the implementation, not a separate task.
 
 **Process:**
+
 1. Make the change
 2. Test the change
 3. Document the change in SYSTEM_LOG.md
@@ -242,11 +254,13 @@ Documentation drift is a form of technical debt. By the time "later" arrives:
 ### When to Create a README
 
 **Create a README when:**
+
 - Starting a new project or service
 - Creating a new module with multiple files
 - Building a reusable component/library
 
 **Do NOT create a README for:**
+
 - Single-file utilities (document in the file itself)
 - Temporary experimental code
 - Proof-of-concept code that won't be maintained
@@ -390,6 +404,7 @@ Observation → Hypothesis → Action
 ```
 
 **Example:**
+
 ```markdown
 ## Database Performance Optimization
 
@@ -428,6 +443,7 @@ Before declaring any task complete, verify:
 **Documentation is non-negotiable.** Tasks without proper documentation are incomplete.
 
 Violations result in:
+
 - Task marked as incomplete
 - Mandatory documentation before proceeding
 - Logged incident in SYSTEM_LOG.md
