@@ -137,7 +137,7 @@ All implementations are evaluated against these four non-negotiable imperatives,
 
 Comprehensive documentation for each layer of the framework is located in the following directories:
 
-- **[Global Governance](global/)**: Universal rules, anti-regression patterns, and the PC2E core philosophy.
+- **[Global Governance](global/)**: Universal rules, anti-regression patterns, the PC2E core philosophy, and token optimisation.
 - **[Operational Modes](modes/)**: Detailed Entry/Exit gates for Orchestrator, Architect, Code, Debug, and Ask modes.
 - **[Standardized Workflows](workflows/)**: Step-by-step procedures for Docker, CI/CD, and system migrations.
 - **[Governance Artifacts](templates/)**: Standardized formats for Tech Decision Records (TDRs) and system logs.

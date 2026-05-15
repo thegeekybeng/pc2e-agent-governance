@@ -6,7 +6,6 @@ pc2e_version: 1.0
 
 # Workspace Governance Framework
 
-
 > This framework enforces good code development practices, documentation standards, and quality gates across all AI-assisted work in this workspace.
 
 ---
@@ -20,6 +19,7 @@ Every implementation in this workspace MUST satisfy these four imperatives. They
 Every design and implementation MUST be horizontally scalable. Single points of failure are forbidden.
 
 **Requirements:**
+
 - Services MUST be stateless wherever possible
 - When state is required, use externalized state stores (databases, caches) that can themselves be scaled
 - Database queries MUST be indexed and optimized (no full-table scans in production code)
@@ -88,6 +88,7 @@ Every implementation MUST be production-quality from the first commit. No "we'll
 **The AI Agent MUST NEVER** log or output sensitive Personal Identifiable Information (PII), proprietary business logic secrets, or raw database dumps into `SYSTEM_LOG.md` or terminal output.
 
 **Standards:**
+
 - **Blind Execution Standard**: When processing sensitive data or proprietary algorithms, the agent must treat the data as ephemeral. It must immediately flush that data from its active reasoning context once the operation succeeds.
 - **Data Logging**: If data logging is necessary for debugging, the agent MUST anonymize or intentionally redact the output.
 - **PII Protection**: Never log email addresses, phone numbers, API keys, passwords, or personal data.
@@ -105,6 +106,7 @@ Every implementation MUST be production-quality from the first commit. No "we'll
 | 3 | **SYSTEM_LOG.md** | Audit trail of all technical decisions | `SYSTEM_LOG.md` |
 
 **Rules:**
+
 - Read these files at the START of every session
 - Read these files AGAIN when encountering looping bugs (more than 2 failed attempts at the same fix)
 - Update ALL THREE files BEFORE ending any session where changes were made
@@ -127,17 +129,20 @@ Every implementation MUST be production-quality from the first commit. No "we'll
 ### 2.2 Implementation Standards
 
 **File Discipline:**
+
 - **No orphaned files**: Every file created MUST be referenced by at least one other file (docker-compose, import, config, or documentation). If a file exists in isolation, it is an error.
 - **Read before edit**: ALWAYS use the Read tool on a file before modifying it. Never modify a file based on assumptions.
 - **Minimal changes**: Make the smallest change that solves the problem. Do not refactor unrelated code unless explicitly asked.
 
 **Security by Default:**
+
 - **No hardcoded secrets**: Environment variables for ALL credentials, API keys, and sensitive configuration. Use `.env` files.
 - **`.env` in `.gitignore`**: Every project MUST list `.env` and `.env.*` in `.gitignore` BEFORE writing any secrets to those files. Verify with: `grep -q "^\.env" .gitignore || echo "WARNING: .env not in .gitignore"`
 - **No root containers**: All Docker services MUST run as non-privileged users.
 - **Multi-stage Docker builds**: Production images MUST use multi-stage builds.
 
 **Code Quality:**
+
 - **Consistent naming**: Follow the existing naming conventions in the project. Do not introduce new patterns without explicit user approval.
 - **Error handling**: Every service MUST include proper error handling with meaningful error messages. No silent failures.
 - **Type safety**: Use TypeScript strict mode for JS projects and type hints for Python projects.
@@ -253,9 +258,21 @@ This governance framework applies to ALL modes. Each mode extends these rules wi
 
 ---
 
+## SECTION 7: Token Optimisation
+
+Token consumption is a resource governance imperative under Core Imperative 1 (Scalability).
+Deploying this framework without applying prompt caching where the provider supports it
+is a scalability violation.
+
+**See**: [global/token-optimisation.md](token-optimisation.md) for the four methods,
+priority order, loading strategy by context budget, and the token budget decision tree.
+
+---
+
 ## Enforcement
 
 These rules are **mandatory** and apply to every task. Violations result in:
+
 - Task marked as incomplete
 - Mandatory rework
 - Documentation of the violation in `SYSTEM_LOG.md`
